@@ -4,6 +4,9 @@ angular.module('starter.directives', [])
 
   return {
     'restrict': 'E',
+    'scope': {
+      'stereoEffect':'='
+    },
     'link': link
   };
 
@@ -12,6 +15,7 @@ angular.module('starter.directives', [])
     var cube;
     init();
     function init() {
+      // Main Scene
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, 2100);
       camera.position.set(0, 10, 0);
@@ -67,16 +71,22 @@ angular.module('starter.directives', [])
       controls.update(dt);
     };
     function render() {
-      renderer.render(scene, camera);
-      //effect.render(scene, camera);
+      if($scope.stereoEffect == true) {
+        effect.render(scene, camera);
+      } else {
+        renderer.render(scene, camera);
+      }
     };
     function resize() {
       var width = container.offsetWidth;
       var height = container.offsetHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-      effect.setSize(width, height);
+      if($scope.stereoEffect == true) {
+        effect.setSize(width, height);
+      } else {
+        renderer.setSize(width, height);
+      }
     };
     function fullscreen() {
       if (container.requestFullscreen) {
