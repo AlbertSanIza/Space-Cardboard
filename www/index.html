@@ -12,36 +12,11 @@
     <script src="js/lib/StereoEffect.js"></script>
     <script src="js/lib/DeviceOrientationControls.js"></script>
     <script src="js/lib/OrbitControls.js"></script>
-    <script src="js/lib/helvetiker_regular.typeface.js"></script>
-    <script src="https://timezonedb.googlecode.com/files/timezonedb.js" type="text/javascript"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
   </head>
-  <body ng-app="starter" ng-controller="AppCtrl as app">
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Cardboard</h1>
-        <div class="buttons">
-          <button class="button button-clear" ng-click="openSettings()"><i class="icon ion-gear-a"></i></button>
-        </div>
-      </ion-header-bar>
-      <ion-content scroll="false" padding="false">
-        <cardboard-gl></cardboard-gl>
-      </ion-content>
-    </ion-pane>
-    <script id="settings.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar>
-          <h1 class="title">Settings</h1>
-          <div class="buttons">
-            <button class="button button-clear" ng-click="closeSettings()">Done</button>
-          </div>
-        </ion-header-bar>
-        <ion-content>
-          <form>
-            <ion-toggle ng-model="data.enableAwesome" toggle-class="toggle-assertive">Enable Awesome?</ion-toggle>
-          </form>
-        </ion-content>
-      </ion-modal-view>
-    </script>
+  <body ng-app="starter" ng-controller="MainCtrl">
   </body>
 </html>

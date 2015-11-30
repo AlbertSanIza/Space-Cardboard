@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -12,11 +12,3 @@ angular.module('starter', ['ionic'])
     }
   });
 })
-
-.controller('AppCtrl', ['$scope', '$ionicModal', function($scope, $ionicModal) {
-
-}])
-
-.directive('cardboardGl', [function() {
-
-}]);
