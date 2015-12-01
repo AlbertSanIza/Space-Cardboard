@@ -20,7 +20,7 @@ angular.module('starter.directives', [])
       // Main Scene
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, StarfieldSize + 100);
-      camera.position.set(0, 500, 1000);
+      camera.position.set(0, 500, 0);
       scene.add(camera);
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
@@ -71,6 +71,8 @@ angular.module('starter.directives', [])
         scene.add(Sun);
       });
       Mercury = new THREE.Mesh();
+      MercuryOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
+      scene.add(MercuryOrbit);
       Loader_Texture.load('img/planets/mercurymap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -79,6 +81,8 @@ angular.module('starter.directives', [])
         scene.add(Mercury);
       });
       Venus = new THREE.Mesh();
+      VenusOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:400});
+      scene.add(VenusOrbit);
       Loader_Texture.load('img/planets/venusmap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -87,6 +91,8 @@ angular.module('starter.directives', [])
         scene.add(Venus);
       });
       Earth = new THREE.Mesh();
+      EarthOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:600});
+      scene.add(EarthOrbit);
       Loader_Texture.load('img/planets/earthmap1k.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -103,6 +109,8 @@ angular.module('starter.directives', [])
         scene.add(EarthMoon);
       });
       Mars = new THREE.Mesh();
+      MarsOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:800});
+      scene.add(MarsOrbit);
       Loader_Texture.load('img/planets/marsmap1k.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -111,6 +119,8 @@ angular.module('starter.directives', [])
         scene.add(Mars);
       });
       Jupiter = new THREE.Mesh();
+      JupiterOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1000});
+      scene.add(JupiterOrbit);
       Loader_Texture.load('img/planets/jupitermap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -119,6 +129,8 @@ angular.module('starter.directives', [])
         scene.add(Jupiter);
       });
       Saturn = new THREE.Mesh();
+      SaturnOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1200});
+      scene.add(SaturnOrbit);
       Loader_Texture.load('img/planets/saturnmap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -136,6 +148,8 @@ angular.module('starter.directives', [])
         scene.add(SaturnRing);
       });
       Uranus = new THREE.Mesh();
+      UranusOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
+      scene.add(UranusOrbit);
       Loader_Texture.load('img/planets/uranusmap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -153,6 +167,8 @@ angular.module('starter.directives', [])
         scene.add(UranusRing);
       });
       Neptune = new THREE.Mesh();
+      NeptuneOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1600});
+      scene.add(NeptuneOrbit);
       Loader_Texture.load('img/planets/neptunemap.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -161,6 +177,8 @@ angular.module('starter.directives', [])
         scene.add(Neptune);
       });
       Pluto = new THREE.Mesh();
+      PlutoOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
+      scene.add(PlutoOrbit);
       Loader_Texture.load('img/planets/plutomap1k.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
@@ -180,8 +198,8 @@ angular.module('starter.directives', [])
         object.rotation.y = -90 * (Math.PI / 180);
         object.rotation.z = -0 * (Math.PI / 180);
         object.position.set(0, -2, -17);
-        fighter = object.clone();
-        camera.add(fighter);
+        StarFighter = object.clone();
+        camera.add(StarFighter);
       });
       clock = new THREE.Clock();
       animate();
@@ -189,9 +207,6 @@ angular.module('starter.directives', [])
     function animate() {
       var elapsedSeconds = clock.getElapsedTime();
       requestAnimationFrame(animate);
-      /* Magic Zone */
-      Earth.rotation.y += 0.005;
-      /* Magic Zone */
       update(clock.getDelta());
       render(clock.getDelta());
     };
@@ -200,7 +215,27 @@ angular.module('starter.directives', [])
       camera.updateProjectionMatrix();
       controls.update(dt);
     };
-    function render() {
+    var t = 0;
+    function render(dt) {
+      /* Magic Zone */
+      t += 0.001;
+      Mercury.rotation.y += 0.005;
+      Venus.rotation.y += 0.005;
+      Earth.rotation.y += 0.005;
+      Mars.rotation.y += 0.005;
+      Jupiter.rotation.y += 0.005;
+      Saturn.rotation.y += 0.005;
+      Uranus.rotation.y += 0.005;
+      Neptune.rotation.y += 0.005;
+      Pluto.rotation.y += 0.005;
+      var MathCos = Math.cos(t), MathSin = Math.sin(t);
+      Mercury.position.x = 200 * MathCos;
+      Mercury.position.z = 200 * MathSin;
+      Venus.position.x = 400 * MathCos;
+      Venus.position.z = 400 * MathSin;
+      Earth.position.x = 600 * MathCos;
+      Earth.position.z = 600 * MathSin;
+      /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
       } else {
@@ -228,6 +263,20 @@ angular.module('starter.directives', [])
       } else if (container.webkitRequestFullscreen) {
         container.webkitRequestFullscreen();
       }
+    };
+    function PlanetOrbit(Position0, Position1) {
+      var deltaX = Position1.X - Position0.X;
+      var deltaY = Position1.Y - Position0.Y;
+      var deltaZ = Position1.Z - Position0.Z;
+      var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+      var Curve = new THREE.EllipseCurve(0, 0, distance, distance, 0, 2 * Math.PI, false, 2);
+      var CurvePath = new THREE.Path(Curve.getPoints(50));
+      var CurveGeometry = CurvePath.createPointsGeometry(50);
+      var CurveMaterial = new THREE.LineBasicMaterial({color: 0x004890});
+      var CurveEllipse = new THREE.Line(CurveGeometry, CurveMaterial);
+      CurveEllipse.rotation.x = 90 * (Math.PI / 180);
+      CurveEllipse.position.set(Position0.X, Position0.Y, Position0.Z);
+      return CurveEllipse;
     };
   };
 }])
