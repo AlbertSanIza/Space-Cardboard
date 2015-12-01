@@ -173,6 +173,9 @@ angular.module('starter.directives', [])
     function animate() {
       var elapsedSeconds = clock.getElapsedTime();
       requestAnimationFrame(animate);
+      /* Magic Zone */
+      Earth.rotation.y += 0.005;
+      /* Magic Zone */
       update(clock.getDelta());
       render(clock.getDelta());
     };
