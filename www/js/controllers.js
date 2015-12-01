@@ -2,7 +2,8 @@ angular.module('starter.controllers', [])
 
 .controller('MainCtrl', function($scope, $ionicModal) {
   $scope.Data = {
-    StereoEffect: false
+    StereoEffect: false,
+    Landscape: false
   };
 
   $ionicModal.fromTemplateUrl('templates/settings.html', {
@@ -21,10 +22,13 @@ angular.module('starter.controllers', [])
   function readDeviceOrientation() {
     if (Math.abs(window.orientation) === 90) {
       // Landscape
-      console.log("Landscape");
+      $scope.Data.Landscape = true;
+      $scope.$apply();
     } else {
       // Portrait
-      console.log("Portrait");
+      $scope.Data.Landscape = false;
+      $scope.Data.StereoEffect = false;
+      $scope.$apply();
     }
   };
   window.addEventListener('orientationchange', readDeviceOrientation, false);
