@@ -14,6 +14,7 @@ angular.module('starter.directives', [])
     var scene, camera, renderer, element, container, effect, controls, clock;
     var Starfield, Sun, Mercury, Venus, Earth, EarthMoon, Mars, Jupiter, Saturn, SaturnRing, Uranus, Neptune, Pluto;
     var StarfieldSize = 20000;
+    var StarFighter;
     init();
     function init() {
       // Main Scene
@@ -166,6 +167,21 @@ angular.module('starter.directives', [])
         Pluto = new THREE.Mesh(Geometry, Material);
         Pluto.position.set(0, 0, 1800);
         scene.add(Pluto);
+      });
+      Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
+        object.traverse(function (child) {
+          if (child instanceof THREE.Mesh) {
+            child.material.map = THREE.ImageUtils.loadTexture('obj/StarFighter/StarFighter.png');
+          }
+        });
+        object.scale.x = 0.3;
+        object.scale.y = 0.3;
+        object.scale.z = 0.3;
+        object.rotation.y = -90 * (Math.PI / 180);
+        object.rotation.z = -0 * (Math.PI / 180);
+        object.position.set(0, -2, -17);
+        fighter = object.clone();
+        camera.add(fighter);
       });
       clock = new THREE.Clock();
       animate();
