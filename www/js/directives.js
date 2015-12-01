@@ -77,7 +77,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Mercury = new THREE.Mesh(Geometry, Material);
-        Mercury.position.set(0, 0, 200);
         scene.add(Mercury);
       });
       Venus = new THREE.Mesh();
@@ -87,7 +86,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Venus = new THREE.Mesh(Geometry, Material);
-        Venus.position.set(0, 0, 400);
         scene.add(Venus);
       });
       Earth = new THREE.Mesh();
@@ -97,15 +95,15 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Earth = new THREE.Mesh(Geometry, Material);
-        Earth.position.set(0, 0, 600);
         scene.add(Earth);
       });
       EarthMoon = new THREE.Mesh();
+      MoonOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
+      scene.add(MoonOrbit);
       Loader_Texture.load('img/planets/moonmap1k.jpg', function(texture) {
         var Material = new THREE.MeshPhongMaterial({map: texture});
-        var Geometry = new THREE.SphereGeometry(100, 32, 32);
+        var Geometry = new THREE.SphereGeometry(50, 32, 32);
         EarthMoon = new THREE.Mesh(Geometry, Material);
-        EarthMoon.position.set(200, 0, 600);
         scene.add(EarthMoon);
       });
       Mars = new THREE.Mesh();
@@ -115,7 +113,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Mars = new THREE.Mesh(Geometry, Material);
-        Mars.position.set(0, 0, 800);
         scene.add(Mars);
       });
       Jupiter = new THREE.Mesh();
@@ -125,7 +122,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Jupiter = new THREE.Mesh(Geometry, Material);
-        Jupiter.position.set(0, 0, 1000);
         scene.add(Jupiter);
       });
       Saturn = new THREE.Mesh();
@@ -135,13 +131,12 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Saturn = new THREE.Mesh(Geometry, Material);
-        Saturn.position.set(0, 0, 1200);
         scene.add(Saturn);
       });
       SaturnRing = new THREE.Mesh();
       Loader_Texture.load('img/planets/saturn-rings.png', function(texture) {
         var Material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
-        var Geometry = new THREE.XRingGeometry(100, 150, 50, 6, 0, Math.PI * 2);
+        var Geometry = new THREE.XRingGeometry(110, 150, 50, 6, 0, Math.PI * 2);
         SaturnRing = new THREE.Mesh(Geometry, Material);
         SaturnRing.position.set(0, 0, 1200);
         SaturnRing.rotation.x = -45 * (Math.PI / 180);
@@ -154,13 +149,12 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Uranus = new THREE.Mesh(Geometry, Material);
-        Uranus.position.set(0, 0, 1400);
         scene.add(Uranus);
       });
       UranusRing = new THREE.Mesh();
       Loader_Texture.load('img/planets/saturn-rings.png', function(texture) {
         var Material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
-        var Geometry = new THREE.XRingGeometry(100, 130, 50, 6, 0, Math.PI * 2);
+        var Geometry = new THREE.XRingGeometry(110, 130, 50, 6, 0, Math.PI * 2);
         UranusRing = new THREE.Mesh(Geometry, Material);
         UranusRing.position.set(0, 0, 1400);
         UranusRing.rotation.x = -80 * (Math.PI / 180);
@@ -173,7 +167,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Neptune = new THREE.Mesh(Geometry, Material);
-        Neptune.position.set(0, 0, 1600);
         scene.add(Neptune);
       });
       Pluto = new THREE.Mesh();
@@ -183,7 +176,6 @@ angular.module('starter.directives', [])
         var Material = new THREE.MeshPhongMaterial({map: texture});
         var Geometry = new THREE.SphereGeometry(100, 32, 32);
         Pluto = new THREE.Mesh(Geometry, Material);
-        Pluto.position.set(0, 0, 1800);
         scene.add(Pluto);
       });
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
@@ -219,6 +211,7 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
+      // Planets Rotation
       Mercury.rotation.y += 0.005;
       Venus.rotation.y += 0.005;
       Earth.rotation.y += 0.005;
@@ -228,6 +221,7 @@ angular.module('starter.directives', [])
       Uranus.rotation.y += 0.005;
       Neptune.rotation.y += 0.005;
       Pluto.rotation.y += 0.005;
+      // Planets Translation
       var MathCos = Math.cos(t), MathSin = Math.sin(t);
       Mercury.position.x = 200 * MathCos;
       Mercury.position.z = 200 * MathSin;
@@ -235,6 +229,26 @@ angular.module('starter.directives', [])
       Venus.position.z = 400 * MathSin;
       Earth.position.x = 600 * MathCos;
       Earth.position.z = 600 * MathSin;
+      MoonOrbit.position.x = Earth.position.x;
+      MoonOrbit.position.z = Earth.position.z;
+      EarthMoon.position.x = MoonOrbit.position.x + (200 * Math.cos(t*10));
+      EarthMoon.position.z = MoonOrbit.position.z + (200 * Math.sin(t*10));
+      Mars.position.x = 800 * MathCos;
+      Mars.position.z = 800 * MathSin;
+      Jupiter.position.x = 1000 * MathCos;
+      Jupiter.position.z = 1000 * MathSin;
+      Saturn.position.x = 1200 * MathCos;
+      Saturn.position.z = 1200 * MathSin;
+      SaturnRing.position.x = 1200 * MathCos;
+      SaturnRing.position.z = 1200 * MathSin;
+      Uranus.position.x = 1400 * MathCos;
+      Uranus.position.z = 1400 * MathSin;
+      UranusRing.position.x = 1400 * MathCos;
+      UranusRing.position.z = 1400 * MathSin;
+      Neptune.position.x = 1600 * MathCos;
+      Neptune.position.z = 1600 * MathSin;
+      Pluto.position.x = 1800 * MathCos;
+      Pluto.position.z = 1800 * MathSin;
       /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
