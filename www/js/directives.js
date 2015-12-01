@@ -114,26 +114,18 @@ angular.module('starter.directives', [])
         Planets.Pluto.material = new THREE.MeshPhongMaterial({map: texture});
         scene.add(Planets.Pluto);
       });
-      MercuryOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
-      scene.add(MercuryOrbit);
-      VenusOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:400});
-      scene.add(VenusOrbit);
-      EarthOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:600});
-      scene.add(EarthOrbit);
-      MoonOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
-      scene.add(MoonOrbit);
-      MarsOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:800});
-      scene.add(MarsOrbit);
-      JupiterOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1000});
-      scene.add(JupiterOrbit);
-      SaturnOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1200});
-      scene.add(SaturnOrbit);
-      UranusOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
-      scene.add(UranusOrbit);
-      NeptuneOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1600});
-      scene.add(NeptuneOrbit);
-      PlutoOrbit = PlanetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
-      scene.add(PlutoOrbit);
+      scene.add(
+        Planets.MercuryOrbit,
+        Planets.VenusOrbit,
+        Planets.EarthOrbit,
+        Planets.MoonOrbit,
+        Planets.MarsOrbit,
+        Planets.JupiterOrbit,
+        Planets.SaturnOrbit,
+        Planets.UranusOrbit,
+        Planets.NeptuneOrbit,
+        Planets.PlutoOrbit
+      );
 
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
         object.traverse(function (child) {
@@ -150,6 +142,7 @@ angular.module('starter.directives', [])
         StarFighter = object.clone();
         camera.add(StarFighter);
       });
+
       clock = new THREE.Clock();
       animate();
     };
@@ -186,10 +179,10 @@ angular.module('starter.directives', [])
       Planets.Venus.position.z = 400 * MathSin;
       Planets.Earth.position.x = 600 * MathCos;
       Planets.Earth.position.z = 600 * MathSin;
-      MoonOrbit.position.x = Planets.Earth.position.x;
-      MoonOrbit.position.z = Planets.Earth.position.z;
-      Planets.EarthMoon.position.x = MoonOrbit.position.x + (200 * Math.cos(t*10));
-      Planets.EarthMoon.position.z = MoonOrbit.position.z + (200 * Math.sin(t*10));
+      Planets.MoonOrbit.position.x = Planets.Earth.position.x;
+      Planets.MoonOrbit.position.z = Planets.Earth.position.z;
+      Planets.EarthMoon.position.x = Planets.MoonOrbit.position.x + (200 * Math.cos(t*10));
+      Planets.EarthMoon.position.z = Planets.MoonOrbit.position.z + (200 * Math.sin(t*10));
       Planets.Mars.position.x = 800 * MathCos;
       Planets.Mars.position.z = 800 * MathSin;
       Planets.Jupiter.position.x = 1000 * MathCos;
