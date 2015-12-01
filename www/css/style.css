@@ -1,21 +1,37 @@
-#frame {
+.modal{
+  top: 0 ;
+  bottom: 0 ;
+  left: 0 ;
+  right: 0 ;
+  width: 100% ;
+}
+.slider {
   width: 100%;
   height: 100%;
 }
-#frame .row {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-}
-#frame .row .col {
-  padding: 0;
-}
-#frame img {
-  width: 100%;
+.slider-slide {
+  padding-top: 10px;
+  text-align: center;
 }
 cardboard-gl {
   display: block;
   background: black;
   width: 100%;
   height: 100%;
+}
+.topControls {
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  height: calc(100% - 40px);
+  color: blue;
+}
+.bottomControls {
+  position: absolute;
+  text-align: center;
+  height: 40px;
+  bottom: 0px;
+  width: 100%;
 }

@@ -22,7 +22,12 @@
   </head>
   <body ng-app="starter" ng-controller="MainCtrl">
     <ion-content scroll="false" padding="false">
-      <cardboard-gl stereo-effect="false"></cardboard-gl>
+      <cardboard-gl stereo-effect="Data.StereoEffect"></cardboard-gl>
+      <div class="bottomControls">
+        <button class="button button-clear" ng-click="openSettingsModal()">
+          <img src="img/cardboard_logo.png" style="height: 30px;"></img>
+        </button>
+      </div>
     </ion-content>
   </body>
 </html>
