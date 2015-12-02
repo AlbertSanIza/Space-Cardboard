@@ -2,7 +2,7 @@ angular.module('starter.services', [])
 
 .service('Planets', function () {
 
-  this.baseURL = "/img/planets/";
+  this.baseURL = "img/planets/";
 
   var manager = new THREE.LoadingManager();
   manager.onProgress = function (item, loaded, total) {
