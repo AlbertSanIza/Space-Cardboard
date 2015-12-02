@@ -53,7 +53,6 @@ angular.module('starter.directives', [])
           console.log("Load Finished");
         }
       };
-      var Loader_Texture = new THREE.TextureLoader(manager);
       var Loader_OBJ = new THREE.OBJLoader(manager);
       // Textures
       Planets.Loader.load(Planets.baseURL + 'galaxy_starfield.png', function(texture) {
@@ -61,70 +60,70 @@ angular.module('starter.directives', [])
         scene.add(Planets.Starfield);
       });
       Planets.Loader.load(Planets.baseURL + 'sunmap.jpg', function(texture) {
-        Planets.Sun.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Sun);
+        Planets.Sun.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Sun.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'mercurymap.jpg', function(texture) {
-        Planets.Mercury.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Mercury);
+        Planets.Mercury.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Mercury.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'venusmap.jpg', function(texture) {
-        Planets.Venus.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Venus);
+        Planets.Venus.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Venus.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'earthmap1k.jpg', function(texture) {
-        Planets.Earth.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Earth);
+        Planets.Earth.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Earth.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'moonmap1k.jpg', function(texture) {
-        Planets.EarthMoon.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.EarthMoon);
+        Planets.EarthMoon.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.EarthMoon.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'marsmap1k.jpg', function(texture) {
-        Planets.Mars.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Mars);
+        Planets.Mars.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Mars.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'jupitermap.jpg', function(texture) {
-        Planets.Jupiter.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Jupiter);
+        Planets.Jupiter.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Jupiter.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'saturnmap.jpg', function(texture) {
-        Planets.Saturn.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Saturn);
+        Planets.Saturn.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Saturn.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'saturn-rings.png', function(texture) {
-        Planets.SaturnRing.material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
-        Planets.SaturnRing.rotation.x = -45 * (Math.PI / 180);
-        scene.add(Planets.SaturnRing);
+        Planets.Saturn.Ring.material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
+        Planets.Saturn.Ring.rotation.x = -45 * (Math.PI / 180);
+        scene.add(Planets.Saturn.Ring);
       });
       Planets.Loader.load(Planets.baseURL + 'uranusmap.jpg', function(texture) {
-        Planets.Uranus.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Uranus);
+        Planets.Uranus.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Uranus.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'saturn-rings.png', function(texture) {
-        Planets.UranusRing.material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
-        Planets.UranusRing.rotation.x = -80 * (Math.PI / 180);
-        scene.add(Planets.UranusRing);
+        Planets.Uranus.Ring.material = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity: 0.6});
+        Planets.Uranus.Ring.rotation.x = -80 * (Math.PI / 180);
+        scene.add(Planets.Uranus.Ring);
       });
       Planets.Loader.load(Planets.baseURL + 'neptunemap.jpg', function(texture) {
-        Planets.Neptune.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Neptune);
+        Planets.Neptune.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Neptune.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'plutomap1k.jpg', function(texture) {
-        Planets.Pluto.material = new THREE.MeshPhongMaterial({map: texture});
-        scene.add(Planets.Pluto);
+        Planets.Pluto.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
+        scene.add(Planets.Pluto.Sphere);
       });
       scene.add(
-        Planets.MercuryOrbit,
-        Planets.VenusOrbit,
-        Planets.EarthOrbit,
-        Planets.MoonOrbit,
-        Planets.MarsOrbit,
-        Planets.JupiterOrbit,
-        Planets.SaturnOrbit,
-        Planets.UranusOrbit,
-        Planets.NeptuneOrbit,
-        Planets.PlutoOrbit
+        Planets.Mercury.Orbit,
+        Planets.Venus.Orbit,
+        Planets.Earth.Orbit,
+        Planets.EarthMoon.Orbit,
+        Planets.Mars.Orbit,
+        Planets.Jupiter.Orbit,
+        Planets.Saturn.Orbit,
+        Planets.Uranus.Orbit,
+        Planets.Neptune.Orbit,
+        Planets.Pluto.Orbit
       );
 
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
@@ -157,48 +156,51 @@ angular.module('starter.directives', [])
       camera.updateProjectionMatrix();
       controls.update(dt);
     };
-    var t = 0;
+    var t = 100 * Math.random();
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
       // Planets Rotation
-      Planets.Mercury.rotation.y += 0.005;
-      Planets.Venus.rotation.y += 0.005;
-      Planets.Earth.rotation.y += 0.005;
-      Planets.Mars.rotation.y += 0.005;
-      Planets.Jupiter.rotation.y += 0.005;
-      Planets.Saturn.rotation.y += 0.005;
-      Planets.Uranus.rotation.y += 0.005;
-      Planets.Neptune.rotation.y += 0.005;
-      Planets.Pluto.rotation.y += 0.005;
+      Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
+      Planets.Mercury.Sphere.rotation.y += Planets.Properties.Mercury.Speed.Rotation;
+      Planets.Venus.Sphere.rotation.y -= Planets.Properties.Venus.Speed.Rotation;
+      Planets.Earth.Sphere.rotation.y += Planets.Properties.Earth.Speed.Rotation;
+      Planets.EarthMoon.Sphere.rotation.y += Planets.Properties.EarthMoon.Speed.Rotation;
+      Planets.Mars.Sphere.rotation.y += Planets.Properties.Mars.Speed.Rotation;
+      Planets.Jupiter.Sphere.rotation.y += Planets.Properties.Jupiter.Speed.Rotation;
+      Planets.Saturn.Sphere.rotation.y += Planets.Properties.Saturn.Speed.Rotation;
+      Planets.Uranus.Sphere.rotation.y -= Planets.Properties.Uranus.Speed.Rotation;
+      Planets.Neptune.Sphere.rotation.y += Planets.Properties.Neptune.Speed.Rotation;
+      Planets.Pluto.Sphere.rotation.y -= Planets.Properties.Pluto.Speed.Rotation;
       // Planets Translation
-      var MathCos = Math.cos(t), MathSin = Math.sin(t);
-      Planets.Mercury.position.x = 200 * MathCos;
-      Planets.Mercury.position.z = 200 * MathSin;
-      Planets.Venus.position.x = 400 * MathCos;
-      Planets.Venus.position.z = 400 * MathSin;
-      Planets.Earth.position.x = 600 * MathCos;
-      Planets.Earth.position.z = 600 * MathSin;
-      Planets.MoonOrbit.position.x = Planets.Earth.position.x;
-      Planets.MoonOrbit.position.z = Planets.Earth.position.z;
-      Planets.EarthMoon.position.x = Planets.MoonOrbit.position.x + (200 * Math.cos(t*10));
-      Planets.EarthMoon.position.z = Planets.MoonOrbit.position.z + (200 * Math.sin(t*10));
-      Planets.Mars.position.x = 800 * MathCos;
-      Planets.Mars.position.z = 800 * MathSin;
-      Planets.Jupiter.position.x = 1000 * MathCos;
-      Planets.Jupiter.position.z = 1000 * MathSin;
-      Planets.Saturn.position.x = 1200 * MathCos;
-      Planets.Saturn.position.z = 1200 * MathSin;
-      Planets.SaturnRing.position.x = 1200 * MathCos;
-      Planets.SaturnRing.position.z = 1200 * MathSin;
-      Planets.Uranus.position.x = 1400 * MathCos;
-      Planets.Uranus.position.z = 1400 * MathSin;
-      Planets.UranusRing.position.x = 1400 * MathCos;
-      Planets.UranusRing.position.z = 1400 * MathSin;
-      Planets.Neptune.position.x = 1600 * MathCos;
-      Planets.Neptune.position.z = 1600 * MathSin;
-      Planets.Pluto.position.x = 1800 * MathCos;
-      Planets.Pluto.position.z = 1800 * MathSin;
+      Planets.Sun.Sphere.position.x = Planets.Properties.Sun.Distance * Math.cos(t * Planets.Properties.Sun.Speed.Translation);
+      Planets.Sun.Sphere.position.z = Planets.Properties.Sun.Distance * Math.sin(t * Planets.Properties.Sun.Speed.Translation);
+      Planets.Mercury.Sphere.position.x = Planets.Properties.Mercury.Distance * Math.cos(t * Planets.Properties.Mercury.Speed.Translation);
+      Planets.Mercury.Sphere.position.z = Planets.Properties.Mercury.Distance * Math.sin(t * Planets.Properties.Mercury.Speed.Translation);
+      Planets.Venus.Sphere.position.x = Planets.Properties.Venus.Distance * Math.cos(t * Planets.Properties.Venus.Speed.Translation);
+      Planets.Venus.Sphere.position.z = Planets.Properties.Venus.Distance * Math.sin(t * Planets.Properties.Venus.Speed.Translation);
+      Planets.Earth.Sphere.position.x = Planets.Properties.Earth.Distance * Math.cos(t * Planets.Properties.Earth.Speed.Translation);
+      Planets.Earth.Sphere.position.z = Planets.Properties.Earth.Distance * Math.sin(t * Planets.Properties.Earth.Speed.Translation);
+      Planets.EarthMoon.Orbit.position.x = Planets.Earth.Sphere.position.x;
+      Planets.EarthMoon.Orbit.position.z = Planets.Earth.Sphere.position.z;
+      Planets.EarthMoon.Sphere.position.x = Planets.EarthMoon.Orbit.position.x + (200 * Math.cos(t * Planets.Properties.EarthMoon.Speed.Translation));
+      Planets.EarthMoon.Sphere.position.z = Planets.EarthMoon.Orbit.position.z + (200 * Math.sin(t * Planets.Properties.EarthMoon.Speed.Translation));
+      Planets.Mars.Sphere.position.x = Planets.Properties.Mars.Distance * Math.cos(t * Planets.Properties.Mars.Speed.Translation);
+      Planets.Mars.Sphere.position.z = Planets.Properties.Mars.Distance * Math.sin(t * Planets.Properties.Mars.Speed.Translation);
+      Planets.Jupiter.Sphere.position.x = Planets.Properties.Jupiter.Distance * Math.cos(t * Planets.Properties.Jupiter.Speed.Translation);
+      Planets.Jupiter.Sphere.position.z = Planets.Properties.Jupiter.Distance * Math.sin(t * Planets.Properties.Jupiter.Speed.Translation);
+      Planets.Saturn.Sphere.position.x = Planets.Properties.Saturn.Distance * Math.cos(t * Planets.Properties.Saturn.Speed.Translation);
+      Planets.Saturn.Sphere.position.z = Planets.Properties.Saturn.Distance * Math.sin(t * Planets.Properties.Saturn.Speed.Translation);
+      Planets.Saturn.Ring.position.x = Planets.Saturn.Sphere.position.x;
+      Planets.Saturn.Ring.position.z = Planets.Saturn.Sphere.position.z;
+      Planets.Uranus.Sphere.position.x = Planets.Properties.Uranus.Distance * Math.cos(t * Planets.Properties.Uranus.Speed.Translation);
+      Planets.Uranus.Sphere.position.z = Planets.Properties.Uranus.Distance * Math.sin(t * Planets.Properties.Uranus.Speed.Translation);
+      Planets.Uranus.Ring.position.x = Planets.Uranus.Sphere.position.x;
+      Planets.Uranus.Ring.position.z = Planets.Uranus.Sphere.position.z;
+      Planets.Neptune.Sphere.position.x = Planets.Properties.Neptune.Distance * Math.cos(t * Planets.Properties.Neptune.Speed.Translation);
+      Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
+      Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
+      Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
       /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);

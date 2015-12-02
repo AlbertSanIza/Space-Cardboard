@@ -26,44 +26,152 @@ angular.module('starter.services', [])
     return Mesh;
   };
 
-  this.Starfield = SetPlanet(20000);
-  this.Sun = SetPlanet(100);
-  this.Mercury = SetPlanet(100);
-  this.Venus = SetPlanet(100);
-  this.Earth = SetPlanet(100);
-  this.EarthMoon = SetPlanet(50);
-  this.Mars = SetPlanet(100);
-  this.Jupiter = SetPlanet(100);
-  this.Saturn = SetPlanet(100);
-  this.SaturnRing = SetRing(100);
-  this.Uranus = SetPlanet(100);
-  this.UranusRing = SetRing(100);
-  this.Neptune = SetPlanet(100);
-  this.Pluto = SetPlanet(100);
-
-  SetOrbit = function(Position0, Position1) {
-    var deltaX = Position1.X - Position0.X;
-    var deltaY = Position1.Y - Position0.Y;
-    var deltaZ = Position1.Z - Position0.Z;
-    var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+  SetOrbit = function(Distance) {
+    var distance = Math.sqrt(Distance * Distance);
     var Curve = new THREE.EllipseCurve(0, 0, distance, distance, 0, 2 * Math.PI, false, 2);
     var CurvePath = new THREE.Path(Curve.getPoints(50));
     var CurveGeometry = CurvePath.createPointsGeometry(50);
     var CurveMaterial = new THREE.LineBasicMaterial({color: 0x004890});
     var CurveEllipse = new THREE.Line(CurveGeometry, CurveMaterial);
     CurveEllipse.rotation.x = 90 * (Math.PI / 180);
-    CurveEllipse.position.set(Position0.X, Position0.Y, Position0.Z);
     return CurveEllipse;
   };
 
-  this.MercuryOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
-  this.VenusOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:400});
-  this.EarthOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:600});
-  this.MoonOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:200});
-  this.MarsOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:800});
-  this.JupiterOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1000});
-  this.SaturnOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1200});
-  this.UranusOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
-  this.NeptuneOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1600});
-  this.PlutoOrbit = SetOrbit({X:0, Y:0, Z:0}, {X:0, Y:0, Z:1400});
+  this.Starfield = SetPlanet(20000);
+  this.Properties = {
+    Starfield: 60000,
+    Sun: {
+      Size: 200,
+      Distance: 30,
+      Speed: {
+        Rotation: 0.001,
+        Translation: 3
+       }
+    },
+    Mercury: {
+      Size: 100,
+      Distance: 300,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 1.607
+       }
+    },
+    Venus: {
+      Size: 100,
+      Distance: 400,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 1.174
+       }
+    },
+    Earth: {
+      Size: 100,
+      Distance: 600,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 1
+       }
+    },
+    EarthMoon: {
+      Size: 50,
+      Distance: 200,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 5
+       }
+    },
+    Mars: {
+      Size: 100,
+      Distance: 800,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.802
+       }
+    },
+    Jupiter: {
+      Size: 100,
+      Distance: 1000,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.434
+       }
+    },
+    Saturn: {
+      Size: 100,
+      Distance: 1200,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.323
+       }
+    },
+    Uranus: {
+      Size: 100,
+      Distance: 1400,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.228
+       }
+    },
+    Neptune: {
+      Size: 100,
+      Distance: 1600,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.182
+       }
+    },
+    Pluto: {
+      Size: 100,
+      Distance: 1800,
+      Speed: {
+        Rotation: 0.005,
+        Translation: 0.159
+       }
+    }
+  };
+  this.Sun = {
+    Sphere: SetPlanet(this.Properties.Sun.Size)
+  };
+  this.Mercury = {
+    Sphere: SetPlanet(this.Properties.Mercury.Size),
+    Orbit: SetOrbit(this.Properties.Mercury.Distance)
+  };
+  this.Venus = {
+    Sphere: SetPlanet(this.Properties.Venus.Size),
+    Orbit: SetOrbit(this.Properties.Venus.Distance)
+  };
+  this.Earth = {
+    Sphere: SetPlanet(this.Properties.Earth.Size),
+    Orbit: SetOrbit(this.Properties.Earth.Distance)
+  };
+  this.EarthMoon = {
+    Sphere: SetPlanet(this.Properties.EarthMoon.Size),
+    Orbit: SetOrbit(this.Properties.EarthMoon.Distance)
+  };
+  this.Mars = {
+    Sphere: SetPlanet(this.Properties.Mars.Size),
+    Orbit: SetOrbit(this.Properties.Mars.Distance)
+  };
+  this.Jupiter = {
+    Sphere: SetPlanet(this.Properties.Jupiter.Size),
+    Orbit: SetOrbit(this.Properties.Jupiter.Distance)
+  };
+  this.Saturn = {
+    Sphere: SetPlanet(this.Properties.Saturn.Size),
+    Orbit: SetOrbit(this.Properties.Saturn.Distance),
+    Ring: SetRing(this.Properties.Saturn.Size)
+  };
+  this.Uranus = {
+    Sphere: SetPlanet(this.Properties.Uranus.Size),
+    Orbit: SetOrbit(this.Properties.Uranus.Distance),
+    Ring: SetRing(this.Properties.Uranus.Size)
+  };
+  this.Neptune = {
+    Sphere: SetPlanet(this.Properties.Neptune.Size),
+    Orbit: SetOrbit(this.Properties.Neptune.Distance)
+  };
+  this.Pluto = {
+    Sphere: SetPlanet(this.Properties.Pluto.Size),
+    Orbit: SetOrbit(this.Properties.Pluto.Distance)
+  };
 })
