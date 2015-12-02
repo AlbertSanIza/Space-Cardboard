@@ -228,19 +228,5 @@ angular.module('starter.directives', [])
         container.webkitRequestFullscreen();
       }
     };
-    function PlanetOrbit(Position0, Position1) {
-      var deltaX = Position1.X - Position0.X;
-      var deltaY = Position1.Y - Position0.Y;
-      var deltaZ = Position1.Z - Position0.Z;
-      var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-      var Curve = new THREE.EllipseCurve(0, 0, distance, distance, 0, 2 * Math.PI, false, 2);
-      var CurvePath = new THREE.Path(Curve.getPoints(50));
-      var CurveGeometry = CurvePath.createPointsGeometry(50);
-      var CurveMaterial = new THREE.LineBasicMaterial({color: 0x004890});
-      var CurveEllipse = new THREE.Line(CurveGeometry, CurveMaterial);
-      CurveEllipse.rotation.x = 90 * (Math.PI / 180);
-      CurveEllipse.position.set(Position0.X, Position0.Y, Position0.Z);
-      return CurveEllipse;
-    };
   };
 }])
