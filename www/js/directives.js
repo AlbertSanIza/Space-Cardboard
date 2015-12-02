@@ -12,14 +12,13 @@ angular.module('starter.directives', [])
 
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, clock;
-    var StarfieldSize = 20000;
-    var StarFighter;
+    var StarFighter, FighterPosition = {x: 0, y: 1000, z: 0};
     init();
     function init() {
       // Main Scene
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, StarfieldSize + 100);
-      camera.position.set(0, 500, 0);
+      camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, Planets.Properties.Starfield.Size + 100);
+      camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
       scene.add(camera);
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
@@ -56,8 +55,8 @@ angular.module('starter.directives', [])
       var Loader_OBJ = new THREE.OBJLoader(manager);
       // Textures
       Planets.Loader.load(Planets.baseURL + 'galaxy_starfield.png', function(texture) {
-        Planets.Starfield.material = new THREE.MeshPhongMaterial({map: texture, side: THREE.BackSide});
-        scene.add(Planets.Starfield);
+        Planets.Starfield.Sphere.material = new THREE.MeshPhongMaterial({map: texture, side: THREE.BackSide});
+        scene.add(Planets.Starfield.Sphere);
       });
       Planets.Loader.load(Planets.baseURL + 'sunmap.jpg', function(texture) {
         Planets.Sun.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
@@ -160,6 +159,14 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
+      // Camera Movement
+      if($scope.stereoEffect == false) {
+        var cameraDirection = camera.getWorldDirection();
+        FighterPosition.x += cameraDirection.x * 0.9;
+        FighterPosition.y += cameraDirection.y * 0.9;
+        FighterPosition.z += cameraDirection.z * 0.9;
+        camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
+      }
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
       Planets.Mercury.Sphere.rotation.y += Planets.Properties.Mercury.Speed.Rotation;
