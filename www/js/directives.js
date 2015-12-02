@@ -160,7 +160,7 @@ angular.module('starter.directives', [])
       /* Magic Zone */
       t += 0.001;
       // Camera Movement
-      if($scope.stereoEffect == false) {
+      if($scope.stereoEffect == true) {
         var cameraDirection = camera.getWorldDirection();
         FighterPosition.x += cameraDirection.x * 0.9;
         FighterPosition.y += cameraDirection.y * 0.9;
