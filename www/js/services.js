@@ -37,9 +37,10 @@ angular.module('starter.services', [])
     return CurveEllipse;
   };
 
-  this.Starfield = SetPlanet(20000);
   this.Properties = {
-    Starfield: 60000,
+    Starfield: {
+      Size: 20000
+    },
     Sun: {
       Size: 200,
       Distance: 30,
@@ -128,6 +129,9 @@ angular.module('starter.services', [])
         Translation: 0.159
        }
     }
+  };
+  this.Starfield = {
+    Sphere: SetPlanet(this.Properties.Starfield.Size)
   };
   this.Sun = {
     Sphere: SetPlanet(this.Properties.Sun.Size)
