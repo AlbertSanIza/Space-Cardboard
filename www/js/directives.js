@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
 
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, clock;
-    var StarFighter, FighterPosition = {x: 0, y: 1000, z: 0};
+    var StarFighter, FighterPosition = {x: 0, y: 2000, z: 0};
     init();
     function init() {
       // Main Scene
@@ -159,14 +159,6 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
-      // Camera Movement
-      if($scope.stereoEffect == true) {
-        var cameraDirection = camera.getWorldDirection();
-        FighterPosition.x += cameraDirection.x * 0.9;
-        FighterPosition.y += cameraDirection.y * 0.9;
-        FighterPosition.z += cameraDirection.z * 0.9;
-        camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
-      }
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
       Planets.Mercury.Sphere.rotation.y += Planets.Properties.Mercury.Speed.Rotation;
@@ -208,6 +200,18 @@ angular.module('starter.directives', [])
       Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
+      // Camera Movement
+      if($scope.stereoEffect == true) {
+        var FighterSpeed = 1.5;
+        if (PlanetDistance(StarFighter, Planets.Jupiter.Sphere) <= (Planets.Properties.Saturn.Size + 100)) {
+          FighterSpeed = FighterSpeed * 5;
+        }
+        var cameraDirection = camera.getWorldDirection();
+        FighterPosition.x += cameraDirection.x * FighterSpeed;
+        FighterPosition.y += cameraDirection.y * FighterSpeed;
+        FighterPosition.z += cameraDirection.z * FighterSpeed;
+        camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
+      }
       /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
@@ -237,5 +241,12 @@ angular.module('starter.directives', [])
         container.webkitRequestFullscreen();
       }
     };
+    function PlanetDistance(PlanetA, PlanetB) {
+      deltaX = PlanetB.x - PlanetA.x;
+      deltaY = PlanetB.y - PlanetA.y;
+      deltaZ = PlanetB.z - PlanetA.z;
+      distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+      return distance;
+    }
   };
 }])
