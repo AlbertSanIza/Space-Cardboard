@@ -42,7 +42,7 @@ angular.module('starter.services', [])
       Size: 20000
     },
     Sun: {
-      Size: 200,
+      Size: 1000,
       Distance: 30,
       Speed: {
         Rotation: 0.001,
@@ -50,16 +50,16 @@ angular.module('starter.services', [])
        }
     },
     Mercury: {
-      Size: 100,
-      Distance: 300,
+      Size: 50,
+      Distance: 1600,
       Speed: {
         Rotation: 0.005,
         Translation: 1.607
        }
     },
     Venus: {
-      Size: 100,
-      Distance: 400,
+      Size: 95,
+      Distance: 2000,
       Speed: {
         Rotation: 0.005,
         Translation: 1.174
@@ -67,14 +67,14 @@ angular.module('starter.services', [])
     },
     Earth: {
       Size: 100,
-      Distance: 600,
+      Distance: 2400,
       Speed: {
         Rotation: 0.005,
         Translation: 1
        }
     },
     EarthMoon: {
-      Size: 50,
+      Size: 30,
       Distance: 200,
       Speed: {
         Rotation: 0.005,
@@ -82,48 +82,48 @@ angular.module('starter.services', [])
        }
     },
     Mars: {
-      Size: 100,
-      Distance: 800,
+      Size: 60,
+      Distance: 2800,
       Speed: {
         Rotation: 0.005,
         Translation: 0.802
        }
     },
     Jupiter: {
-      Size: 100,
-      Distance: 1000,
+      Size: 600,
+      Distance: 4000,
       Speed: {
         Rotation: 0.005,
         Translation: 0.434
        }
     },
     Saturn: {
-      Size: 100,
-      Distance: 1200,
+      Size: 500,
+      Distance: 5200,
       Speed: {
         Rotation: 0.005,
         Translation: 0.323
        }
     },
     Uranus: {
-      Size: 100,
-      Distance: 1400,
+      Size: 250,
+      Distance: 6000,
       Speed: {
         Rotation: 0.005,
         Translation: 0.228
        }
     },
     Neptune: {
-      Size: 100,
-      Distance: 1600,
+      Size: 180,
+      Distance: 6400,
       Speed: {
         Rotation: 0.005,
         Translation: 0.182
        }
     },
     Pluto: {
-      Size: 100,
-      Distance: 1800,
+      Size: 20,
+      Distance: 7000,
       Speed: {
         Rotation: 0.005,
         Translation: 0.159
