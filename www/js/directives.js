@@ -111,6 +111,14 @@ angular.module('starter.directives', [])
       Planets.Loader.load(Planets.baseURL + 'plutomap1k.jpg', function(texture) {
         Planets.Pluto.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
         scene.add(Planets.Pluto.Sphere);
+        texti = new THREE.TextGeometry("Hello", {
+          size: 1,
+          height: 1
+        });
+        textMesh1 = new THREE.Mesh( texti, new THREE.MeshPhongMaterial({map: texture}) );
+        textMesh1.position.set(0, 10, -17);
+        textMesh1.rotation.x = 50 * (Math.PI / 180);
+        camera.add(textMesh1);
       });
       scene.add(
         Planets.Mercury.Orbit,
