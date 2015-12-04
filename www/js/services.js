@@ -37,6 +37,14 @@ angular.module('starter.services', [])
     return CurveEllipse;
   };
 
+  this.Distance = function(PlanetA, PlanetB) {
+    deltaX = PlanetB.x - PlanetA.x;
+    deltaY = PlanetB.y - PlanetA.y;
+    deltaZ = PlanetB.z - PlanetA.z;
+    distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+    return distance;
+  };
+
   this.Properties = {
     Starfield: {
       Size: 20000
@@ -47,7 +55,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.001,
         Translation: 3
-       }
+      }
     },
     Mercury: {
       Size: 50,
@@ -55,7 +63,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 1.607
-       }
+      }
     },
     Venus: {
       Size: 95,
@@ -63,7 +71,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 1.174
-       }
+      }
     },
     Earth: {
       Size: 100,
@@ -71,7 +79,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 1
-       }
+      }
     },
     EarthMoon: {
       Size: 30,
@@ -79,7 +87,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 5
-       }
+      }
     },
     Mars: {
       Size: 60,
@@ -87,7 +95,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.802
-       }
+      }
     },
     Jupiter: {
       Size: 600,
@@ -95,7 +103,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.434
-       }
+      }
     },
     Saturn: {
       Size: 500,
@@ -103,7 +111,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.323
-       }
+      }
     },
     Uranus: {
       Size: 250,
@@ -111,7 +119,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.228
-       }
+      }
     },
     Neptune: {
       Size: 180,
@@ -119,7 +127,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.182
-       }
+      }
     },
     Pluto: {
       Size: 20,
@@ -127,7 +135,7 @@ angular.module('starter.services', [])
       Speed: {
         Rotation: 0.005,
         Translation: 0.159
-       }
+      }
     }
   };
   this.Starfield = {

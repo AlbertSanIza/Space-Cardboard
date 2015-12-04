@@ -203,7 +203,7 @@ angular.module('starter.directives', [])
       // Camera Movement
       if($scope.stereoEffect == true) {
         var FighterSpeed = 1.5;
-        if (PlanetDistance(StarFighter, Planets.Jupiter.Sphere) <= (Planets.Properties.Saturn.Size + 100)) {
+        if (Planets.Distance(StarFighter, Planets.Jupiter.Sphere) <= (Planets.Properties.Saturn.Size + 100)) {
           FighterSpeed = FighterSpeed * 5;
         }
         var cameraDirection = camera.getWorldDirection();
@@ -241,12 +241,5 @@ angular.module('starter.directives', [])
         container.webkitRequestFullscreen();
       }
     };
-    function PlanetDistance(PlanetA, PlanetB) {
-      deltaX = PlanetB.x - PlanetA.x;
-      deltaY = PlanetB.y - PlanetA.y;
-      deltaZ = PlanetB.z - PlanetA.z;
-      distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-      return distance;
-    }
   };
 }])
