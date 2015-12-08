@@ -12,23 +12,21 @@ angular.module('starter.directives', [])
   };
 
   function link($scope, $element, $attr) {
-    var scene, camera, renderer, element, container, effect, controls, clock;
+    var scene, camera, renderer, element, container, containerText, effect, controls, clock;
     var StarFighter, FighterPosition = {x: 0, y: 1500, z: 0};
-    var TextMesh, textcontainer;
     init();
     function init() {
       // Main Scene
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, Planets.Properties.Starfield.Size + 100);
       camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
-      scene.add(camera);
+      scene.add(camera);s
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
       container = $element[0];
       container.appendChild(element);
-      //console.log(container.getElementById('eltexto'));
-      textcontainer = container.querySelector('#eltexto');
-
+      //containerText = container.querySelector('#mitexto');
+      //containerText.innerHTML  = "Here goes the text";
       effect = new THREE.StereoEffect(renderer);
       // Controls
       controls = new THREE.OrbitControls(camera, element);
@@ -129,7 +127,6 @@ angular.module('starter.directives', [])
         Planets.Neptune.Orbit,
         Planets.Pluto.Orbit
       );
-
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {
@@ -145,16 +142,6 @@ angular.module('starter.directives', [])
         StarFighter = object.clone();
         camera.add(StarFighter);
       });
-
-      TextGeometry = new THREE.TextGeometry("Hello", {
-        size: 2,
-        height: 1
-      });
-      TextMesh = new THREE.Mesh( TextGeometry, new THREE.MeshPhongMaterial() );
-      TextMesh.position.set(-5, 12, -16);
-      TextMesh.rotation.x = 20 * (Math.PI / 180);
-      //TextMesh.rotation.y = 25 * (Math.PI / 180);
-      camera.add(TextMesh);
 
       clock = new THREE.Clock();
       animate();
@@ -174,7 +161,6 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
-      //TextMesh.rotation.y += 0.1;
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
       Planets.Mercury.Sphere.rotation.y += Planets.Properties.Mercury.Speed.Rotation;
@@ -229,7 +215,7 @@ angular.module('starter.directives', [])
         camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
       }
       // Text
-      textcontainer.innerHTML  = "X: " + FighterPosition.x + "<br>Y: " + FighterPosition.y + "<br>Z: " + FighterPosition.z;
+      //containerText.innerHTML  = "Here goes the text";
       /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
