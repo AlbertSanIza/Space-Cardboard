@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
 
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, clock;
-    var StarFighter, FighterPosition = {x: 0, y: 2000, z: 0};
+    var StarFighter, FighterPosition = {x: 0, y: 1500, z: 0};
     var TextMesh;
     init();
     function init() {
@@ -170,6 +170,10 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
+      TextMesh.geometry = new THREE.TextGeometry(t, {
+        size: 2,
+        height: 1
+      });
       // Text
       //TextMesh.rotation.y += 0.1;
       // Planets Rotation
