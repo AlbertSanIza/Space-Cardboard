@@ -4,6 +4,7 @@ angular.module('starter.directives', [])
 
   return {
     'restrict': 'E',
+    'templateUrl': 'templates/cardboard.html',
     'scope': {
       'stereoEffect':'='
     },
@@ -13,7 +14,7 @@ angular.module('starter.directives', [])
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, clock;
     var StarFighter, FighterPosition = {x: 0, y: 1500, z: 0};
-    var TextMesh;
+    var TextMesh, textcontainer;
     init();
     function init() {
       // Main Scene
@@ -25,6 +26,9 @@ angular.module('starter.directives', [])
       element = renderer.domElement;
       container = $element[0];
       container.appendChild(element);
+      //console.log(container.getElementById('eltexto'));
+      textcontainer = container.querySelector('#eltexto');
+
       effect = new THREE.StereoEffect(renderer);
       // Controls
       controls = new THREE.OrbitControls(camera, element);
@@ -170,7 +174,6 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
-      // Text
       //TextMesh.rotation.y += 0.1;
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
@@ -225,6 +228,8 @@ angular.module('starter.directives', [])
         FighterPosition.z += cameraDirection.z * FighterSpeed;
         camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
       }
+      // Text
+      textcontainer.innerHTML  = "X: " + FighterPosition.x + "<br>Y: " + FighterPosition.y + "<br>Z: " + FighterPosition.z;
       /* Magic Zone */
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
