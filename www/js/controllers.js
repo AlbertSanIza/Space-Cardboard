@@ -19,4 +19,13 @@ angular.module('starter.controllers', [])
     $scope.settingsModal.hide();
   };
 
+  function readDeviceOrientation() {
+    if (Math.abs(window.orientation) === 90) {
+      // Landscape
+    } else {
+      // Portrait
+    }
+  };
+  window.addEventListener('orientationchange', readDeviceOrientation, false);
+
 })
