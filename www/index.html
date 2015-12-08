@@ -27,12 +27,10 @@
     <div ng-switch="Data.StereoEffect">
       <div class="shadow" ng-switch-when="true"></div>
     </div>
-    <div ng-switch="Data.Landscape">
-      <div class="bottomControls" ng-switch-when="true">
-        <button class="button button-clear" ng-click="openSettingsModal()">
-          <img src="img/cardboard_logo.png" style="height: 30px;">
-        </button>
-      </div>
+    <div class="bottomControls">
+      <button class="button button-clear" ng-click="openSettingsModal()">
+        <img src="img/cardboard_logo.png" style="height: 30px;">
+      </button>
     </div>
   </ion-content>
 </body>
