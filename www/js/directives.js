@@ -1,5 +1,6 @@
 angular.module('starter.directives', [])
 
+/*
 .directive('cardboardGl', ['Planets', function(Planets) {
 
   return {
@@ -171,7 +172,7 @@ angular.module('starter.directives', [])
     };
     var t = 100 * Math.random();
     function render(dt) {
-      /* Magic Zone */
+      // Magic Zone
       t += 0.001;
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
@@ -228,7 +229,7 @@ angular.module('starter.directives', [])
       }
       // Text
       //containerText.innerHTML  = "Here goes the text";
-      /* Magic Zone */
+      // Magic Zone
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
       } else {
@@ -262,3 +263,4 @@ angular.module('starter.directives', [])
     };
   };
 }])
+*/
