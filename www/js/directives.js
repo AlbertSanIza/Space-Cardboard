@@ -45,6 +45,17 @@ angular.module('starter.directives', [])
         window.removeEventListener('deviceorientation', setOrientationControls, true);
       };
       window.addEventListener('deviceorientation', setOrientationControls, true);
+      function readDeviceOrientation() {
+        if (Math.abs(window.orientation) === 90) {
+          // Landscape
+          $scope.stereoEffect = true;
+        } else {
+          // Portrait
+          $scope.landscapeMode = false;
+          $scope.stereoEffect = false;
+        }
+      };
+      window.addEventListener('orientationchange', readDeviceOrientation, false);
       // Lighting
       light = new THREE.AmbientLight(0xd9d9d9);
       scene.add(light);
