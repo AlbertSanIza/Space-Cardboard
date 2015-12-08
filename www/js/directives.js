@@ -13,6 +13,7 @@ angular.module('starter.directives', [])
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, clock;
     var StarFighter, FighterPosition = {x: 0, y: 2000, z: 0};
+    var TextMesh;
     init();
     function init() {
       // Main Scene
@@ -111,14 +112,6 @@ angular.module('starter.directives', [])
       Planets.Loader.load(Planets.baseURL + 'plutomap1k.jpg', function(texture) {
         Planets.Pluto.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
         scene.add(Planets.Pluto.Sphere);
-        texti = new THREE.TextGeometry("Hello", {
-          size: 1,
-          height: 1
-        });
-        textMesh1 = new THREE.Mesh( texti, new THREE.MeshPhongMaterial({map: texture}) );
-        textMesh1.position.set(0, 10, -17);
-        textMesh1.rotation.x = 50 * (Math.PI / 180);
-        camera.add(textMesh1);
       });
       scene.add(
         Planets.Mercury.Orbit,
@@ -149,6 +142,16 @@ angular.module('starter.directives', [])
         camera.add(StarFighter);
       });
 
+      TextGeometry = new THREE.TextGeometry("Hello", {
+        size: 2,
+        height: 1
+      });
+      TextMesh = new THREE.Mesh( TextGeometry, new THREE.MeshPhongMaterial() );
+      TextMesh.position.set(-5, 12, -16);
+      TextMesh.rotation.x = 20 * (Math.PI / 180);
+      //TextMesh.rotation.y = 25 * (Math.PI / 180);
+      camera.add(TextMesh);
+
       clock = new THREE.Clock();
       animate();
     };
@@ -167,6 +170,8 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
+      // Text
+      //TextMesh.rotation.y += 0.1;
       // Planets Rotation
       Planets.Sun.Sphere.rotation.y += Planets.Properties.Sun.Speed.Rotation;
       Planets.Mercury.Sphere.rotation.y += Planets.Properties.Mercury.Speed.Rotation;
