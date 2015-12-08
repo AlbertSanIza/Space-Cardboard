@@ -1,1 +1,13 @@
-<div>Hello World</div>
+<div ng-switch="stereoEffect">
+  <div class="shadow" ng-switch-when="true"></div>
+</div>
+<div ng-switch="landscapeMode">
+  <div id="instructions" ng-switch-when="false">
+    Rotate your phone to get started!
+  </div>
+  <div class="bottomControls" ng-switch-when="true">
+    <button class="button button-clear" ng-click="openSettingsModal()">
+      <img src="img/cardboard_logo.png" style="height: 30px;">
+    </button>
+  </div>
+</div>

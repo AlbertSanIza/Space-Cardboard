@@ -23,17 +23,7 @@
 </head>
 <body ng-app="starter" ng-controller="MainCtrl">
   <ion-content scroll="false" padding="false">
-    <cardboard-gl stereo-effect="Data.StereoEffect"></cardboard-gl>
-    <div ng-switch="Data.StereoEffect">
-      <div class="shadow" ng-switch-when="true"></div>
-    </div>
-    <div ng-switch="Data.Landscape">
-      <div class="bottomControls" ng-switch-when="true">
-        <button class="button button-clear" ng-click="openSettingsModal()">
-          <img src="img/cardboard_logo.png" style="height: 30px;">
-        </button>
-      </div>
-    </div>
+    <cardboard-gl stereo-effect="Data.StereoEffect" landscape-mode="Data.Landscape"></cardboard-gl>
   </ion-content>
 </body>
 </html>
