@@ -6,7 +6,8 @@ angular.module('starter.directives', [])
     'restrict': 'E',
     'templateUrl': 'templates/cardboard.html',
     'scope': {
-      'stereoEffect':'='
+      'stereoEffect': '=',
+      'landscapeMode': '='
     },
     'link': link
   };
@@ -20,7 +21,7 @@ angular.module('starter.directives', [])
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, Planets.Properties.Starfield.Size + 100);
       camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
-      scene.add(camera);s
+      scene.add(camera);
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
       container = $element[0];
