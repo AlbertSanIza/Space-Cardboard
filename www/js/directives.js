@@ -62,9 +62,9 @@ angular.module('starter.directives', [])
       // Loaders
       var manager = new THREE.LoadingManager();
       manager.onProgress = function(item, loaded, total){
-        console.log("Loading: " + loaded + "/" + total);
+        console.log("StarFighter - Loading: " + loaded + "/" + total);
         if(loaded == total) {
-          console.log("Load Finished");
+          console.log("StarFighter - Load Finished");
         }
       };
       var Loader_OBJ = new THREE.OBJLoader(manager);
