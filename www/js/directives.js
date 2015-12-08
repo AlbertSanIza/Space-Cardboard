@@ -170,10 +170,6 @@ angular.module('starter.directives', [])
     function render(dt) {
       /* Magic Zone */
       t += 0.001;
-      TextMesh.geometry = new THREE.TextGeometry(t, {
-        size: 2,
-        height: 1
-      });
       // Text
       //TextMesh.rotation.y += 0.1;
       // Planets Rotation
