@@ -257,5 +257,8 @@ angular.module('starter.directives', [])
         container.webkitRequestFullscreen();
       }
     };
+    $scope.openSettingsModal = function() {
+      $scope.$parent.openSettingsModal();
+    };
   };
 }])
