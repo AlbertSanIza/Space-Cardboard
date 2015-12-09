@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, FighterPosition = {x: 0, y: 1500, z: 0};
+    var StarFighter, FighterPosition = {x: 2500, y: 1500, z: 0};
     init();
     function init() {
       // Main Scene
@@ -42,7 +42,7 @@ angular.module('starter.directives', [])
       };
       window.addEventListener('deviceorientation', setOrientationControls, true);
       // Lighting
-      ambientLight = new THREE.AmbientLight(0xd9d9d9);
+      ambientLight = new THREE.AmbientLight(0x333333);
       scene.add(ambientLight);
       // Loaders
       var manager = new THREE.LoadingManager();
@@ -61,6 +61,8 @@ angular.module('starter.directives', [])
       Planets.Loader.load(Planets.baseURL + 'sunmap.jpg', function(texture) {
         Planets.Sun.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
         scene.add(Planets.Sun.Sphere);
+        var Sunlight = new THREE.PointLight(0xffffff, 1, 16500);
+        Planets.Sun.Sphere.add(Sunlight);
       });
       Planets.Loader.load(Planets.baseURL + 'mercurymap.jpg', function(texture) {
         Planets.Mercury.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
