@@ -2,9 +2,9 @@ angular.module('starter.controllers', [])
 
 .controller('MainCtrl', function($scope, $ionicModal, $ionicPlatform, $cordovaVibration) {
   $scope.Data = {
-    StereoEffect: false,
-    Landscape: false,
-    Move: false
+    stereoEffect: false,
+    landscapeMode: false,
+    moveStarFighter: false
   };
 
   $ionicModal.fromTemplateUrl('templates/settings.html', {
@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
 
   $scope.Move = function() {
     Vibrate(50);
-    $scope.Data.Move = !$scope.Data.Move;
+    $scope.Data.moveStarFighter = !$scope.Data.moveStarFighter;
   };
 
   function Vibrate(input) {
@@ -34,12 +34,12 @@ angular.module('starter.controllers', [])
   function readDeviceOrientation() {
     if (Math.abs(window.orientation) === 90) {
       // Landscape
-      $scope.Data.Landscape = true;
+      $scope.Data.landscapeMode = true;
       $scope.$apply();
     } else {
       // Portrait
-      $scope.Data.StereoEffect = false;
-      $scope.Data.Landscape = false;
+      $scope.Data.stereoEffect = false;
+      $scope.Data.landscapeMode = false;
       $scope.$apply();
     }
   };
