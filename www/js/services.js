@@ -47,7 +47,7 @@ angular.module('starter.services', [])
 
   this.Properties = {
     Starfield: {
-      Size: 19000
+      Size: 16000
     },
     Sun: {
       Size: 800,
