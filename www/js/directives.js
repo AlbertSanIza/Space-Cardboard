@@ -4,7 +4,8 @@ angular.module('starter.directives', [])
   return {
     'restrict': 'E',
     'scope': {
-      'stereoEffect': '='
+      'stereoEffect': '=',
+      'landscapeMode': '='
     },
     'link': link
   };

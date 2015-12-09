@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('MainCtrl', function($scope, $ionicModal) {
   $scope.Data = {
     StereoEffect: false,
-    Landscape: true
+    Landscape: false
   };
 
   $ionicModal.fromTemplateUrl('templates/settings.html', {
