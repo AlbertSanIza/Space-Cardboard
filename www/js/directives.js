@@ -197,6 +197,13 @@ angular.module('starter.directives', [])
       Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
+      // Camera Movement
+      var FighterSpeed = 1.5;
+      var cameraDirection = camera.getWorldDirection();
+      FighterPosition.x += cameraDirection.x * FighterSpeed;
+      FighterPosition.y += cameraDirection.y * FighterSpeed;
+      FighterPosition.z += cameraDirection.z * FighterSpeed;
+      camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
       // Magic Zone End
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
