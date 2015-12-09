@@ -50,16 +50,16 @@ angular.module('starter.services', [])
       Size: 20000
     },
     Sun: {
-      Size: 1000,
+      Size: 900,
       Distance: 30,
       Speed: {
-        Rotation: 0.001,
+        Rotation: 0.002,
         Translation: 3
       }
     },
     Mercury: {
       Size: 50,
-      Distance: 1600,
+      Distance: 1400,
       Speed: {
         Rotation: 0.005,
         Translation: 1.607
@@ -67,7 +67,7 @@ angular.module('starter.services', [])
     },
     Venus: {
       Size: 95,
-      Distance: 2000,
+      Distance: 1700,
       Speed: {
         Rotation: 0.005,
         Translation: 1.174
@@ -75,7 +75,7 @@ angular.module('starter.services', [])
     },
     Earth: {
       Size: 100,
-      Distance: 2400,
+      Distance: 2100,
       Speed: {
         Rotation: 0.005,
         Translation: 1
@@ -86,12 +86,12 @@ angular.module('starter.services', [])
       Distance: 200,
       Speed: {
         Rotation: 0.005,
-        Translation: 5
+        Translation: 10
       }
     },
     Mars: {
       Size: 60,
-      Distance: 2800,
+      Distance: 2500,
       Speed: {
         Rotation: 0.005,
         Translation: 0.802
@@ -99,7 +99,7 @@ angular.module('starter.services', [])
     },
     Jupiter: {
       Size: 600,
-      Distance: 4000,
+      Distance: 3500,
       Speed: {
         Rotation: 0.005,
         Translation: 0.434
@@ -107,7 +107,7 @@ angular.module('starter.services', [])
     },
     Saturn: {
       Size: 500,
-      Distance: 5200,
+      Distance: 4500,
       Speed: {
         Rotation: 0.005,
         Translation: 0.323
@@ -115,7 +115,7 @@ angular.module('starter.services', [])
     },
     Uranus: {
       Size: 250,
-      Distance: 6000,
+      Distance: 5500,
       Speed: {
         Rotation: 0.005,
         Translation: 0.228
@@ -123,15 +123,15 @@ angular.module('starter.services', [])
     },
     Neptune: {
       Size: 180,
-      Distance: 6400,
+      Distance: 6000,
       Speed: {
         Rotation: 0.005,
         Translation: 0.182
       }
     },
     Pluto: {
-      Size: 20,
-      Distance: 7000,
+      Size: 90,
+      Distance: 6200,
       Speed: {
         Rotation: 0.005,
         Translation: 0.159
