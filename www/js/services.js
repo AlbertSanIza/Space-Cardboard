@@ -29,9 +29,9 @@ angular.module('starter.services', [])
   SetOrbit = function(Distance) {
     var distance = Math.sqrt(Distance * Distance);
     var Curve = new THREE.EllipseCurve(0, 0, distance, distance, 0, 2 * Math.PI, false, 2);
-    var CurvePath = new THREE.Path(Curve.getPoints(50));
-    var CurveGeometry = CurvePath.createPointsGeometry(50);
-    var CurveMaterial = new THREE.LineBasicMaterial({color: 0x004890});
+    var CurvePath = new THREE.Path(Curve.getPoints(60));
+    var CurveGeometry = CurvePath.createPointsGeometry(60);
+    var CurveMaterial = new THREE.LineBasicMaterial({color: 0x004080});
     var CurveEllipse = new THREE.Line(CurveGeometry, CurveMaterial);
     CurveEllipse.rotation.x = 90 * (Math.PI / 180);
     return CurveEllipse;
