@@ -8,10 +8,8 @@ cardboard-gl {
   position: absolute;
   text-align: center;
   top: 0px;
-  height: 100%;
   width: 100%;
   height: calc(100% - 40px);
-  color: blue;
 }
 .bottomControls {
   position: absolute;

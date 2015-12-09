@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('MainCtrl', function($scope, $ionicModal) {
+.controller('MainCtrl', function($scope, $ionicModal, $ionicPlatform, $cordovaVibration) {
   $scope.Data = {
     StereoEffect: false,
     Landscape: false,
@@ -18,6 +18,17 @@ angular.module('starter.controllers', [])
   };
   $scope.closeSettingsModal = function() {
     $scope.settingsModal.hide();
+  };
+
+  $scope.Move = function() {
+    Vibrate(50);
+    $scope.Data.Move = !$scope.Data.Move;
+  };
+
+  function Vibrate(input) {
+    $ionicPlatform.ready(function() {
+      $cordovaVibration.vibrate(input);
+    });
   };
 
   function readDeviceOrientation() {
