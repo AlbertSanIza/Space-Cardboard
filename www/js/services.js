@@ -47,10 +47,10 @@ angular.module('starter.services', [])
 
   this.Properties = {
     Starfield: {
-      Size: 20000
+      Size: 19000
     },
     Sun: {
-      Size: 900,
+      Size: 800,
       Distance: 30,
       Speed: {
         Rotation: 0.002,
@@ -59,7 +59,7 @@ angular.module('starter.services', [])
     },
     Mercury: {
       Size: 50,
-      Distance: 1400,
+      Distance: 1200,
       Speed: {
         Rotation: 0.005,
         Translation: 1.607
@@ -67,7 +67,7 @@ angular.module('starter.services', [])
     },
     Venus: {
       Size: 95,
-      Distance: 1700,
+      Distance: 1450,
       Speed: {
         Rotation: 0.005,
         Translation: 1.174
@@ -75,7 +75,7 @@ angular.module('starter.services', [])
     },
     Earth: {
       Size: 100,
-      Distance: 2100,
+      Distance: 1850,
       Speed: {
         Rotation: 0.005,
         Translation: 1
@@ -91,31 +91,31 @@ angular.module('starter.services', [])
     },
     Mars: {
       Size: 60,
-      Distance: 2500,
+      Distance: 2200,
       Speed: {
         Rotation: 0.005,
         Translation: 0.802
       }
     },
     Jupiter: {
-      Size: 600,
-      Distance: 3500,
+      Size: 500,
+      Distance: 2850,
       Speed: {
         Rotation: 0.005,
         Translation: 0.434
       }
     },
     Saturn: {
-      Size: 500,
-      Distance: 4500,
+      Size: 400,
+      Distance: 4050,
       Speed: {
         Rotation: 0.005,
         Translation: 0.323
       }
     },
     Uranus: {
-      Size: 250,
-      Distance: 5500,
+      Size: 200,
+      Distance: 5000,
       Speed: {
         Rotation: 0.005,
         Translation: 0.228
@@ -123,7 +123,7 @@ angular.module('starter.services', [])
     },
     Neptune: {
       Size: 180,
-      Distance: 6000,
+      Distance: 5550,
       Speed: {
         Rotation: 0.005,
         Translation: 0.182
@@ -131,7 +131,7 @@ angular.module('starter.services', [])
     },
     Pluto: {
       Size: 90,
-      Distance: 6200,
+      Distance: 5900,
       Speed: {
         Rotation: 0.005,
         Translation: 0.159
