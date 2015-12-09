@@ -23,11 +23,11 @@
 </head>
 <body ng-app="starter" ng-controller="MainCtrl">
   <ion-content scroll="false" padding="false">
-    <cardboard-gl stereo-effect="Data.StereoEffect" landscape-mode="Data.Landscape" move-star-fighter="Data.Move"></cardboard-gl>
-    <div ng-switch="Data.StereoEffect">
+    <cardboard-gl stereo-effect="Data.stereoEffect" landscape-mode="Data.landscapeMode" move-star-fighter="Data.moveStarFighter"></cardboard-gl>
+    <div ng-switch="Data.stereoEffect">
       <div class="shadow" ng-switch-when="true"></div>
     </div>
-    <div ng-switch="Data.Landscape">
+    <div ng-switch="Data.landscapeMode">
       <div class="topControls" ng-click="Move()" ng-switch-when="true"></div>
       <div class="bottomControls" ng-switch-when="true">
         <button class="button button-clear" ng-click="openSettingsModal()">
