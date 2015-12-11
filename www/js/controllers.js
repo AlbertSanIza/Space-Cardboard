@@ -38,8 +38,9 @@ angular.module('starter.controllers', [])
       $scope.$apply();
     } else {
       // Portrait
-      $scope.Data.stereoEffect = false;
       $scope.Data.landscapeMode = false;
+      $scope.Data.stereoEffect = false;
+      $scope.Data.moveStarFighter = false;
       $scope.$apply();
     }
   };
