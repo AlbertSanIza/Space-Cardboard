@@ -182,8 +182,8 @@ angular.module('starter.directives', [])
       Planets.Earth.Sphere.position.z = Planets.Properties.Earth.Distance * Math.sin(t * Planets.Properties.Earth.Speed.Translation);
       Planets.EarthMoon.Orbit.position.x = Planets.Earth.Sphere.position.x;
       Planets.EarthMoon.Orbit.position.z = Planets.Earth.Sphere.position.z;
-      Planets.EarthMoon.Sphere.position.x = Planets.EarthMoon.Orbit.position.x + (200 * Math.cos(t * Planets.Properties.EarthMoon.Speed.Translation));
-      Planets.EarthMoon.Sphere.position.z = Planets.EarthMoon.Orbit.position.z + (200 * Math.sin(t * Planets.Properties.EarthMoon.Speed.Translation));
+      Planets.EarthMoon.Sphere.position.x = Planets.EarthMoon.Orbit.position.x + (Planets.Properties.EarthMoon.Distance * Math.cos(t * Planets.Properties.EarthMoon.Speed.Translation));
+      Planets.EarthMoon.Sphere.position.z = Planets.EarthMoon.Orbit.position.z + (Planets.Properties.EarthMoon.Distance * Math.sin(t * Planets.Properties.EarthMoon.Speed.Translation));
       Planets.Mars.Sphere.position.x = Planets.Properties.Mars.Distance * Math.cos(t * Planets.Properties.Mars.Speed.Translation);
       Planets.Mars.Sphere.position.z = Planets.Properties.Mars.Distance * Math.sin(t * Planets.Properties.Mars.Speed.Translation);
       Planets.Jupiter.Sphere.position.x = Planets.Properties.Jupiter.Distance * Math.cos(t * Planets.Properties.Jupiter.Speed.Translation);
