@@ -126,6 +126,7 @@ angular.module('starter.directives', [])
         Planets.Neptune.Orbit,
         Planets.Pluto.Orbit
       );
+      StarFighter = new THREE.Mesh();
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {
