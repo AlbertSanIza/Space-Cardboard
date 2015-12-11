@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight;
+    var StarFighter, StarFighterGhost, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight, StarFighterOrientation = [];
     init();
     function init() {
       // Main Scene
@@ -127,20 +127,28 @@ angular.module('starter.directives', [])
         Planets.Pluto.Orbit
       );
       StarFighter = new THREE.Mesh();
+      StarFighterGhost = new THREE.Mesh();
       Loader_OBJ.load( 'obj/StarFighter/StarFighter.obj', function (object) {
         object.traverse(function (child) {
           if (child instanceof THREE.Mesh) {
             child.material.map = THREE.ImageUtils.loadTexture('obj/StarFighter/StarFighter.png');
           }
         });
-        object.scale.x = 0.3;
-        object.scale.y = 0.3;
-        object.scale.z = 0.3;
         object.rotation.y = -90 * (Math.PI / 180);
         object.rotation.z = -0 * (Math.PI / 180);
         object.position.set(0, -2, -17);
+        object.scale.x = 0.01;
+        object.scale.y = 0.01;
+        object.scale.z = 0.01;
+        StarFighterGhost = object.clone();
+        object.scale.x = 0.3;
+        object.scale.y = 0.3;
+        object.scale.z = 0.3;
         StarFighter = object.clone();
-        camera.add(StarFighter);
+        camera.add(
+          StarFighter,
+          StarFighterGhost
+        );
         StarFighterEngineLight = new THREE.PointLight(0x00ccff, 1, 20);
         StarFighterEngineLight.position.set(0, 0, 0);
         camera.add(StarFighterEngineLight);
@@ -204,10 +212,25 @@ angular.module('starter.directives', [])
       Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
+      // StarFighter Orientation
+      var cameraDirection = camera.getWorldDirection();
+      var StarFighterGhostDirection = StarFighterGhost.getWorldDirection();
+      if(StarFighterOrientation.length < 20) {
+        StarFighterOrientation.push(StarFighterGhostDirection);
+      } else {
+        StarFighter.rotation.x = StarFighterOrientation[0].x;
+        StarFighter.rotation.y = StarFighterOrientation[0].y;
+        StarFighter.rotation.z = StarFighterOrientation[0].z;
+        var NewStarFighterOrientation = [];
+        for(i = 1; i < 20; i++) {
+          NewStarFighterOrientation.push(StarFighterOrientation[i]);
+        }
+        StarFighterOrientation = NewStarFighterOrientation;
+        StarFighterOrientation.push(StarFighterGhostDirection);
+      }
       // Camera Movement
       if($scope.moveStarFighter == true) {
         var FighterSpeed = 1.5;
-        var cameraDirection = camera.getWorldDirection();
         StarFighterPosition.x += cameraDirection.x * FighterSpeed;
         StarFighterPosition.y += cameraDirection.y * FighterSpeed;
         StarFighterPosition.z += cameraDirection.z * FighterSpeed;
