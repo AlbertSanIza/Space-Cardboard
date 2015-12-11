@@ -42,7 +42,7 @@ angular.module('starter.directives', [])
       };
       window.addEventListener('deviceorientation', setOrientationControls, true);
       // Lighting
-      ambientLight = new THREE.AmbientLight(0x404040);
+      ambientLight = new THREE.AmbientLight(0xffffff);
       scene.add(ambientLight);
       // Loaders
       var manager = new THREE.LoadingManager();
@@ -61,7 +61,7 @@ angular.module('starter.directives', [])
       Planets.Loader.load(Planets.baseURL + 'sunmap.jpg', function(texture) {
         Planets.Sun.Sphere.material = new THREE.MeshPhongMaterial({map: texture});
         scene.add(Planets.Sun.Sphere);
-        var Sunlight = new THREE.PointLight(0xe6e6e6, 1, 16500);
+        var Sunlight = new THREE.PointLight(0x999900, 1, 16500);
         Planets.Sun.Sphere.add(Sunlight);
       });
       Planets.Loader.load(Planets.baseURL + 'mercurymap.jpg', function(texture) {
