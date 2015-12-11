@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 2500, y: 1500, z: 0};
+    var StarFighter, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight;
     init();
     function init() {
       // Main Scene
@@ -140,6 +140,9 @@ angular.module('starter.directives', [])
         object.position.set(0, -2, -17);
         StarFighter = object.clone();
         camera.add(StarFighter);
+        StarFighterEngineLight = new THREE.PointLight(0x00ccff, 1, 20);
+        StarFighterEngineLight.position.set(0, 0, 0);
+        camera.add(StarFighterEngineLight);
       });
       clock = new THREE.Clock();
       animate();
