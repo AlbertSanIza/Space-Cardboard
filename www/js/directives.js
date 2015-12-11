@@ -12,13 +12,13 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, FighterPosition = {x: 2500, y: 1500, z: 0};
+    var StarFighter, StarFighterPosition = {x: 2500, y: 1500, z: 0};
     init();
     function init() {
       // Main Scene
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, Planets.Properties.Starfield.Size + 100);
-      camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
+      camera.position.set(StarFighterPosition.x, StarFighterPosition.y, StarFighterPosition.z);
       scene.add(camera);
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
@@ -204,10 +204,10 @@ angular.module('starter.directives', [])
       if($scope.moveStarFighter == true) {
         var FighterSpeed = 1.5;
         var cameraDirection = camera.getWorldDirection();
-        FighterPosition.x += cameraDirection.x * FighterSpeed;
-        FighterPosition.y += cameraDirection.y * FighterSpeed;
-        FighterPosition.z += cameraDirection.z * FighterSpeed;
-        camera.position.set(FighterPosition.x, FighterPosition.y, FighterPosition.z);
+        StarFighterPosition.x += cameraDirection.x * FighterSpeed;
+        StarFighterPosition.y += cameraDirection.y * FighterSpeed;
+        StarFighterPosition.z += cameraDirection.z * FighterSpeed;
+        camera.position.set(StarFighterPosition.x, StarFighterPosition.y, StarFighterPosition.z);
       }
       // Magic Zone End
       if($scope.stereoEffect == true) {
