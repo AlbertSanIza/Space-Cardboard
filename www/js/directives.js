@@ -213,14 +213,15 @@ angular.module('starter.directives', [])
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
       // StarFighter Orientation
-      var cameraDirection = camera.getWorldDirection();
       var StarFighterGhostDirection = StarFighterGhost.getWorldDirection();
       if(StarFighterOrientation.length < 20) {
         StarFighterOrientation.push(StarFighterGhostDirection);
       } else {
-        StarFighter.rotation.x = StarFighterOrientation[0].x;
-        StarFighter.rotation.y = StarFighterOrientation[0].y;
-        StarFighter.rotation.z = StarFighterOrientation[0].z;
+        //console.log();
+        //StarFighter.localToWorld(StarFighterOrientation[0]);
+        //StarFighter.rotation.x = StarFighterOrientation[0].x;
+        //StarFighter.rotation.y = StarFighterOrientation[0].y;
+        //StarFighter.rotation.z = StarFighterOrientation[0].z;
         var NewStarFighterOrientation = [];
         for(i = 1; i < 20; i++) {
           NewStarFighterOrientation.push(StarFighterOrientation[i]);
@@ -230,6 +231,7 @@ angular.module('starter.directives', [])
       }
       // Camera Movement
       if($scope.moveStarFighter == true) {
+        var cameraDirection = camera.getWorldDirection();
         var FighterSpeed = 1.5;
         StarFighterPosition.x += cameraDirection.x * FighterSpeed;
         StarFighterPosition.y += cameraDirection.y * FighterSpeed;
