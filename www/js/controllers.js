@@ -34,10 +34,12 @@ angular.module('starter.controllers', [])
   function readDeviceOrientation() {
     if (Math.abs(window.orientation) === 90) {
       // Landscape
+      Vibrate(50);
       $scope.Data.landscapeMode = true;
       $scope.$apply();
     } else {
       // Portrait
+      Vibrate(50);
       $scope.Data.landscapeMode = false;
       $scope.Data.stereoEffect = false;
       $scope.Data.moveStarFighter = false;
