@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterGhost, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight, StarFighterOrientation = [];
+    var StarFighter, StarFighterGhost, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight;
     init();
     function init() {
       // Main Scene
@@ -212,23 +212,6 @@ angular.module('starter.directives', [])
       Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
-      // StarFighter Orientation
-      var StarFighterGhostDirection = StarFighterGhost.getWorldDirection();
-      if(StarFighterOrientation.length < 20) {
-        StarFighterOrientation.push(StarFighterGhostDirection);
-      } else {
-        //console.log();
-        //StarFighter.localToWorld(StarFighterOrientation[0]);
-        //StarFighter.rotation.x = StarFighterOrientation[0].x;
-        //StarFighter.rotation.y = StarFighterOrientation[0].y;
-        //StarFighter.rotation.z = StarFighterOrientation[0].z;
-        var NewStarFighterOrientation = [];
-        for(i = 1; i < 20; i++) {
-          NewStarFighterOrientation.push(StarFighterOrientation[i]);
-        }
-        StarFighterOrientation = NewStarFighterOrientation;
-        StarFighterOrientation.push(StarFighterGhostDirection);
-      }
       // Camera Movement
       if($scope.moveStarFighter == true) {
         var cameraDirection = camera.getWorldDirection();
