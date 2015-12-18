@@ -210,12 +210,19 @@ angular.module('starter.directives', [])
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
       // Camera Movement
       if($scope.moveStarFighter == true) {
+        if(StarFighter.position.z > -20) {
+          StarFighter.position.z -= 0.1;
+        }
         var cameraDirection = camera.getWorldDirection();
         var FighterSpeed = 1.5;
         StarFighterPosition.x += cameraDirection.x * FighterSpeed;
         StarFighterPosition.y += cameraDirection.y * FighterSpeed;
         StarFighterPosition.z += cameraDirection.z * FighterSpeed;
         camera.position.set(StarFighterPosition.x, StarFighterPosition.y, StarFighterPosition.z);
+      } else {
+        if(StarFighter.position.z < -17) {
+          StarFighter.position.z += 0.1;
+        }
       }
       // Magic Zone End
       if($scope.stereoEffect == true) {
