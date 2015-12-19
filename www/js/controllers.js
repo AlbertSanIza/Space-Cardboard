@@ -25,6 +25,10 @@ angular.module('starter.controllers', [])
     $scope.Data.moveStarFighter = !$scope.Data.moveStarFighter;
   };
 
+  $scope.planetVibrate = function() {
+    Vibrate(50);
+  };
+
   function Vibrate(input) {
     $ionicPlatform.ready(function() {
       $cordovaVibration.vibrate(input);

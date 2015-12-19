@@ -12,7 +12,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 2500, y: 1500, z: 0}, StarFighterEngineLight;
+    var StarFighter, StarFighterPosition = {x: 2000, y: 1000, z: 0}, StarFighterEngineLight;
     init();
     function init() {
       // Main Scene
@@ -223,6 +223,29 @@ angular.module('starter.directives', [])
         if(StarFighter.position.z < -17) {
           StarFighter.position.z += 0.1;
         }
+      }
+      if(Planets.Distance(camera.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Mercury.Sphere.position) < Planets.Properties.Mercury.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Venus.Sphere.position) < Planets.Properties.Venus.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Earth.Sphere.position) < Planets.Properties.Earth.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.EarthMoon.Sphere.position) < Planets.Properties.EarthMoon.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Mars.Sphere.position) < Planets.Properties.Mars.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Jupiter.Sphere.position) < Planets.Properties.Jupiter.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Saturn.Sphere.position) < Planets.Properties.Saturn.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Uranus.Sphere.position) < Planets.Properties.Uranus.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Neptune.Sphere.position) < Planets.Properties.Neptune.Size) {
+        $scope.$parent.planetVibrate();
+      } else if(Planets.Distance(camera.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
+        $scope.$parent.planetVibrate();
       }
       // Magic Zone End
       if($scope.stereoEffect == true) {
