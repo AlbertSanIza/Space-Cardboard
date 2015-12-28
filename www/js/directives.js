@@ -238,6 +238,7 @@ angular.module('starter.directives', [])
         }
         StarFighterSpeed = 1.5;
       }
+      // Planet / SpaceFighter Colition
       if(Planets.Distance(camera.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
         $scope.$parent.planetVibrate();
       } else if(Planets.Distance(camera.position, Planets.Mercury.Sphere.position) < Planets.Properties.Mercury.Size) {
@@ -261,6 +262,7 @@ angular.module('starter.directives', [])
       } else if(Planets.Distance(camera.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
         $scope.$parent.planetVibrate();
       }
+      // Planet Pointing
       for (var i = 17; i <= 5000; i += 5) {
         raycasterPointer.position.set(camera.position.x + (cameraDirection.x * i), camera.position.y + (cameraDirection.y * i), camera.position.z + (cameraDirection.z * i));
         if(Planets.Distance(raycasterPointer.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
