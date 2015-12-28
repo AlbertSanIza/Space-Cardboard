@@ -14,8 +14,9 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 0, y: 900, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
-    var raycasterPointer, raycaster = new THREE.Raycaster();
+    var StarFighter, StarFighterPosition = {x: 1000, y: 900, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
+    var raycasterPointer, raycaster = new THREE.Raycaster(), planetDetected = false;
+    var MiddleText, LeftText, RightText;
     init();
     function init() {
       // Main Scene
@@ -26,6 +27,10 @@ angular.module('starter.directives', [])
       renderer = new THREE.WebGLRenderer({antialias: true});
       element = renderer.domElement;
       container = $element[0];
+      MiddleText = container.querySelector('.MiddleText');
+      LeftText = container.querySelector('.LeftText');
+      RightText = container.querySelector('.RightText');
+      UpdateText("");
       container.appendChild(element);
       effect = new THREE.StereoEffect(renderer);
       // Controls
@@ -256,30 +261,58 @@ angular.module('starter.directives', [])
       } else if(Planets.Distance(camera.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
         $scope.$parent.planetVibrate();
       }
-      for (var i = 17; i < 11800; i++) {
+      for (var i = 17; i <= 5000; i += 5) {
         raycasterPointer.position.set(camera.position.x + (cameraDirection.x * i), camera.position.y + (cameraDirection.y * i), camera.position.z + (cameraDirection.z * i));
         if(Planets.Distance(raycasterPointer.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
+          UpdateText("Sun");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Mercury.Sphere.position) < Planets.Properties.Mercury.Size) {
+          UpdateText("Mercury");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Venus.Sphere.position) < Planets.Properties.Venus.Size) {
+          UpdateText("Venus");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Earth.Sphere.position) < Planets.Properties.Earth.Size) {
+          UpdateText("Earth");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.EarthMoon.Sphere.position) < Planets.Properties.EarthMoon.Size) {
+          UpdateText("Earth Moon");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Mars.Sphere.position) < Planets.Properties.Mars.Size) {
+          UpdateText("Mars");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Jupiter.Sphere.position) < Planets.Properties.Jupiter.Size) {
+          UpdateText("Jupiter");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Saturn.Sphere.position) < Planets.Properties.Saturn.Size) {
+          UpdateText("Saturn");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Uranus.Sphere.position) < Planets.Properties.Uranus.Size) {
+          UpdateText("Uranus");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Neptune.Sphere.position) < Planets.Properties.Neptune.Size) {
+          UpdateText("Neptune");
+          planetDetected = true;
           break;
         } else if(Planets.Distance(raycasterPointer.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
+          UpdateText("Pluto");
+          planetDetected = true;
           break;
+        } else if(planetDetected == true) {
+          if(i >= 4990) {
+            planetDetected = false;
+            UpdateText("");
+            break;
+          }
         }
       }
       raycasterPointer.position.set(camera.position.x + (cameraDirection.x * 17), camera.position.y + (cameraDirection.y * 17), camera.position.z + (cameraDirection.z * 17));
@@ -311,6 +344,11 @@ angular.module('starter.directives', [])
       } else if (container.webkitRequestFullscreen) {
         container.webkitRequestFullscreen();
       }
+    };
+    function UpdateText(theText) {
+      MiddleText.innerHTML  = theText;
+      LeftText.innerHTML  = theText;
+      RightText.innerHTML  = theText;
     };
   };
 }])
