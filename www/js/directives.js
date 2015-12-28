@@ -14,7 +14,7 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 0, y: 1000, z: 0}, StarFighterEngineLight;
+    var StarFighter, StarFighterPosition = {x: 0, y: 1000, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
     init();
     function init() {
       // Main Scene
@@ -212,20 +212,23 @@ angular.module('starter.directives', [])
       Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation * planetsSpeed);
       Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation * planetsSpeed);
       // Camera Movement
+      var cameraDirection = camera.getWorldDirection();
       if($scope.moveStarFighter == true) {
         if(StarFighter.position.z > -20) {
           StarFighter.position.z -= 0.1;
         }
-        var cameraDirection = camera.getWorldDirection();
-        var FighterSpeed = 1.5;
-        StarFighterPosition.x += cameraDirection.x * FighterSpeed;
-        StarFighterPosition.y += cameraDirection.y * FighterSpeed;
-        StarFighterPosition.z += cameraDirection.z * FighterSpeed;
+        if(StarFighterSpeed < 4) {
+          StarFighterSpeed += 0.01;
+        }
+        StarFighterPosition.x += cameraDirection.x * StarFighterSpeed;
+        StarFighterPosition.y += cameraDirection.y * StarFighterSpeed;
+        StarFighterPosition.z += cameraDirection.z * StarFighterSpeed;
         camera.position.set(StarFighterPosition.x, StarFighterPosition.y, StarFighterPosition.z);
       } else {
         if(StarFighter.position.z < -17) {
           StarFighter.position.z += 0.1;
         }
+        StarFighterSpeed = 1.5;
       }
       if(Planets.Distance(camera.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
         $scope.$parent.planetVibrate();
