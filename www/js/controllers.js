@@ -4,7 +4,8 @@ angular.module('starter.controllers', [])
   $scope.Data = {
     stereoEffect: false,
     landscapeMode: false,
-    moveStarFighter: false
+    moveStarFighter: false,
+    planetsSpeed: 1
   };
 
   $ionicModal.fromTemplateUrl('templates/settings.html', {

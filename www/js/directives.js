@@ -7,13 +7,14 @@ angular.module('starter.directives', [])
     'scope': {
       'stereoEffect': '=',
       'landscapeMode': '=',
-      'moveStarFighter': '='
+      'moveStarFighter': '=',
+      'planetsSpeed': '='
     },
     'link': link
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 2000, y: 1000, z: 0}, StarFighterEngineLight;
+    var StarFighter, StarFighterPosition = {x: 0, y: 1000, z: 0}, StarFighterEngineLight;
     init();
     function init() {
       // Main Scene
@@ -181,34 +182,35 @@ angular.module('starter.directives', [])
       Planets.Neptune.Sphere.rotation.y += Planets.Properties.Neptune.Speed.Rotation;
       Planets.Pluto.Sphere.rotation.y -= Planets.Properties.Pluto.Speed.Rotation;
       // Planets Translation
-      Planets.Sun.Sphere.position.x = Planets.Properties.Sun.Distance * Math.cos(t * Planets.Properties.Sun.Speed.Translation);
-      Planets.Sun.Sphere.position.z = Planets.Properties.Sun.Distance * Math.sin(t * Planets.Properties.Sun.Speed.Translation);
-      Planets.Mercury.Sphere.position.x = Planets.Properties.Mercury.Distance * Math.cos(t * Planets.Properties.Mercury.Speed.Translation);
-      Planets.Mercury.Sphere.position.z = Planets.Properties.Mercury.Distance * Math.sin(t * Planets.Properties.Mercury.Speed.Translation);
-      Planets.Venus.Sphere.position.x = Planets.Properties.Venus.Distance * Math.cos(t * Planets.Properties.Venus.Speed.Translation);
-      Planets.Venus.Sphere.position.z = Planets.Properties.Venus.Distance * Math.sin(t * Planets.Properties.Venus.Speed.Translation);
-      Planets.Earth.Sphere.position.x = Planets.Properties.Earth.Distance * Math.cos(t * Planets.Properties.Earth.Speed.Translation);
-      Planets.Earth.Sphere.position.z = Planets.Properties.Earth.Distance * Math.sin(t * Planets.Properties.Earth.Speed.Translation);
+      var planetsSpeed = $scope.planetsSpeed;
+      Planets.Sun.Sphere.position.x = Planets.Properties.Sun.Distance * Math.cos(t * Planets.Properties.Sun.Speed.Translation * planetsSpeed);
+      Planets.Sun.Sphere.position.z = Planets.Properties.Sun.Distance * Math.sin(t * Planets.Properties.Sun.Speed.Translation * planetsSpeed);
+      Planets.Mercury.Sphere.position.x = Planets.Properties.Mercury.Distance * Math.cos(t * Planets.Properties.Mercury.Speed.Translation * planetsSpeed);
+      Planets.Mercury.Sphere.position.z = Planets.Properties.Mercury.Distance * Math.sin(t * Planets.Properties.Mercury.Speed.Translation * planetsSpeed);
+      Planets.Venus.Sphere.position.x = Planets.Properties.Venus.Distance * Math.cos(t * Planets.Properties.Venus.Speed.Translation * planetsSpeed);
+      Planets.Venus.Sphere.position.z = Planets.Properties.Venus.Distance * Math.sin(t * Planets.Properties.Venus.Speed.Translation * planetsSpeed);
+      Planets.Earth.Sphere.position.x = Planets.Properties.Earth.Distance * Math.cos(t * Planets.Properties.Earth.Speed.Translation * planetsSpeed);
+      Planets.Earth.Sphere.position.z = Planets.Properties.Earth.Distance * Math.sin(t * Planets.Properties.Earth.Speed.Translation * planetsSpeed);
       Planets.EarthMoon.Orbit.position.x = Planets.Earth.Sphere.position.x;
       Planets.EarthMoon.Orbit.position.z = Planets.Earth.Sphere.position.z;
-      Planets.EarthMoon.Sphere.position.x = Planets.EarthMoon.Orbit.position.x + (Planets.Properties.EarthMoon.Distance * Math.cos(t * Planets.Properties.EarthMoon.Speed.Translation));
-      Planets.EarthMoon.Sphere.position.z = Planets.EarthMoon.Orbit.position.z + (Planets.Properties.EarthMoon.Distance * Math.sin(t * Planets.Properties.EarthMoon.Speed.Translation));
-      Planets.Mars.Sphere.position.x = Planets.Properties.Mars.Distance * Math.cos(t * Planets.Properties.Mars.Speed.Translation);
-      Planets.Mars.Sphere.position.z = Planets.Properties.Mars.Distance * Math.sin(t * Planets.Properties.Mars.Speed.Translation);
-      Planets.Jupiter.Sphere.position.x = Planets.Properties.Jupiter.Distance * Math.cos(t * Planets.Properties.Jupiter.Speed.Translation);
-      Planets.Jupiter.Sphere.position.z = Planets.Properties.Jupiter.Distance * Math.sin(t * Planets.Properties.Jupiter.Speed.Translation);
-      Planets.Saturn.Sphere.position.x = Planets.Properties.Saturn.Distance * Math.cos(t * Planets.Properties.Saturn.Speed.Translation);
-      Planets.Saturn.Sphere.position.z = Planets.Properties.Saturn.Distance * Math.sin(t * Planets.Properties.Saturn.Speed.Translation);
+      Planets.EarthMoon.Sphere.position.x = Planets.EarthMoon.Orbit.position.x + (Planets.Properties.EarthMoon.Distance * Math.cos(t * Planets.Properties.EarthMoon.Speed.Translation * planetsSpeed));
+      Planets.EarthMoon.Sphere.position.z = Planets.EarthMoon.Orbit.position.z + (Planets.Properties.EarthMoon.Distance * Math.sin(t * Planets.Properties.EarthMoon.Speed.Translation * planetsSpeed));
+      Planets.Mars.Sphere.position.x = Planets.Properties.Mars.Distance * Math.cos(t * Planets.Properties.Mars.Speed.Translation * planetsSpeed);
+      Planets.Mars.Sphere.position.z = Planets.Properties.Mars.Distance * Math.sin(t * Planets.Properties.Mars.Speed.Translation * planetsSpeed);
+      Planets.Jupiter.Sphere.position.x = Planets.Properties.Jupiter.Distance * Math.cos(t * Planets.Properties.Jupiter.Speed.Translation * planetsSpeed);
+      Planets.Jupiter.Sphere.position.z = Planets.Properties.Jupiter.Distance * Math.sin(t * Planets.Properties.Jupiter.Speed.Translation * planetsSpeed);
+      Planets.Saturn.Sphere.position.x = Planets.Properties.Saturn.Distance * Math.cos(t * Planets.Properties.Saturn.Speed.Translation * planetsSpeed);
+      Planets.Saturn.Sphere.position.z = Planets.Properties.Saturn.Distance * Math.sin(t * Planets.Properties.Saturn.Speed.Translation * planetsSpeed);
       Planets.Saturn.Ring.position.x = Planets.Saturn.Sphere.position.x;
       Planets.Saturn.Ring.position.z = Planets.Saturn.Sphere.position.z;
-      Planets.Uranus.Sphere.position.x = Planets.Properties.Uranus.Distance * Math.cos(t * Planets.Properties.Uranus.Speed.Translation);
-      Planets.Uranus.Sphere.position.z = Planets.Properties.Uranus.Distance * Math.sin(t * Planets.Properties.Uranus.Speed.Translation);
+      Planets.Uranus.Sphere.position.x = Planets.Properties.Uranus.Distance * Math.cos(t * Planets.Properties.Uranus.Speed.Translation * planetsSpeed);
+      Planets.Uranus.Sphere.position.z = Planets.Properties.Uranus.Distance * Math.sin(t * Planets.Properties.Uranus.Speed.Translation * planetsSpeed);
       Planets.Uranus.Ring.position.x = Planets.Uranus.Sphere.position.x;
       Planets.Uranus.Ring.position.z = Planets.Uranus.Sphere.position.z;
-      Planets.Neptune.Sphere.position.x = Planets.Properties.Neptune.Distance * Math.cos(t * Planets.Properties.Neptune.Speed.Translation);
-      Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation);
-      Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation);
-      Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation);
+      Planets.Neptune.Sphere.position.x = Planets.Properties.Neptune.Distance * Math.cos(t * Planets.Properties.Neptune.Speed.Translation * planetsSpeed);
+      Planets.Neptune.Sphere.position.z = Planets.Properties.Neptune.Distance * Math.sin(t * Planets.Properties.Neptune.Speed.Translation * planetsSpeed);
+      Planets.Pluto.Sphere.position.x = Planets.Properties.Pluto.Distance * Math.cos(t * Planets.Properties.Pluto.Speed.Translation * planetsSpeed);
+      Planets.Pluto.Sphere.position.z = Planets.Properties.Pluto.Distance * Math.sin(t * Planets.Properties.Pluto.Speed.Translation * planetsSpeed);
       // Camera Movement
       if($scope.moveStarFighter == true) {
         if(StarFighter.position.z > -20) {
