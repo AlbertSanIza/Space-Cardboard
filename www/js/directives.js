@@ -14,8 +14,8 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 0, y: 50, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
-    var raycasterPointer;
+    var StarFighter, StarFighterPosition = {x: 0, y: 900, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
+    var raycasterPointer, raycaster = new THREE.Raycaster();
     init();
     function init() {
       // Main Scene
@@ -152,7 +152,7 @@ angular.module('starter.directives', [])
         StarFighterEngineLight.position.set(0, 0, 0);
         camera.add(StarFighterEngineLight);
       });
-      raycasterPointer = new THREE.Mesh(new THREE.SphereGeometry(.1, 32, 32), new THREE.MeshBasicMaterial({color: 0xff0000}));
+      raycasterPointer = new THREE.Mesh(new THREE.SphereGeometry(.2, 32, 32), new THREE.MeshBasicMaterial({color: 0xff0000}));
       scene.add(raycasterPointer);
       clock = new THREE.Clock();
       animate();
@@ -256,7 +256,32 @@ angular.module('starter.directives', [])
       } else if(Planets.Distance(camera.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
         $scope.$parent.planetVibrate();
       }
-      //raycasterPointer.position.x += 0.1;
+      for (var i = 17; i < 11800; i++) {
+        raycasterPointer.position.set(camera.position.x + (cameraDirection.x * i), camera.position.y + (cameraDirection.y * i), camera.position.z + (cameraDirection.z * i));
+        if(Planets.Distance(raycasterPointer.position, Planets.Sun.Sphere.position) < Planets.Properties.Sun.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Mercury.Sphere.position) < Planets.Properties.Mercury.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Venus.Sphere.position) < Planets.Properties.Venus.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Earth.Sphere.position) < Planets.Properties.Earth.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.EarthMoon.Sphere.position) < Planets.Properties.EarthMoon.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Mars.Sphere.position) < Planets.Properties.Mars.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Jupiter.Sphere.position) < Planets.Properties.Jupiter.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Saturn.Sphere.position) < Planets.Properties.Saturn.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Uranus.Sphere.position) < Planets.Properties.Uranus.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Neptune.Sphere.position) < Planets.Properties.Neptune.Size) {
+          break;
+        } else if(Planets.Distance(raycasterPointer.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
+          break;
+        }
+      }
       raycasterPointer.position.set(camera.position.x + (cameraDirection.x * 17), camera.position.y + (cameraDirection.y * 17), camera.position.z + (cameraDirection.z * 17));
       // Magic Zone End
       if($scope.stereoEffect == true) {
