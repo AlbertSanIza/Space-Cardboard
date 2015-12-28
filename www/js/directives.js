@@ -14,7 +14,8 @@ angular.module('starter.directives', [])
   };
   function link($scope, $element, $attr) {
     var scene, camera, renderer, element, container, effect, controls, ambientLight, clock;
-    var StarFighter, StarFighterPosition = {x: 0, y: 1000, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
+    var StarFighter, StarFighterPosition = {x: 0, y: 50, z: 0}, StarFighterEngineLight, StarFighterSpeed = 1.5;
+    var raycasterPointer;
     init();
     function init() {
       // Main Scene
@@ -151,6 +152,8 @@ angular.module('starter.directives', [])
         StarFighterEngineLight.position.set(0, 0, 0);
         camera.add(StarFighterEngineLight);
       });
+      raycasterPointer = new THREE.Mesh(new THREE.SphereGeometry(.1, 32, 32), new THREE.MeshBasicMaterial({color: 0xff0000}));
+      scene.add(raycasterPointer);
       clock = new THREE.Clock();
       animate();
     };
@@ -253,6 +256,8 @@ angular.module('starter.directives', [])
       } else if(Planets.Distance(camera.position, Planets.Pluto.Sphere.position) < Planets.Properties.Pluto.Size) {
         $scope.$parent.planetVibrate();
       }
+      //raycasterPointer.position.x += 0.1;
+      raycasterPointer.position.set(camera.position.x + (cameraDirection.x * 17), camera.position.y + (cameraDirection.y * 17), camera.position.z + (cameraDirection.z * 17));
       // Magic Zone End
       if($scope.stereoEffect == true) {
         effect.render(scene, camera);
