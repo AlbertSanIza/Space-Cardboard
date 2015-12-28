@@ -3,6 +3,7 @@ angular.module('starter.directives', [])
 .directive('cardboardGl', ['Planets', function(Planets) {
   return {
     'restrict': 'E',
+    'templateUrl': 'templates/cardboard.html',
     'scope': {
       'stereoEffect': '=',
       'landscapeMode': '=',
