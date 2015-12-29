@@ -34,7 +34,8 @@ cardboard-gl {
 .MiddleText {
   color: red;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
+  text-shadow: 1px 1px 6px #000000;
   position: absolute;
   top: 10%;
   width: 100%;
@@ -43,7 +44,8 @@ cardboard-gl {
 .LeftText {
   color: red;
   text-align: center;
-  font-size: 25px;
+  font-size: 34px;
+  text-shadow: 1px 1px 6px #000000;
   position: absolute;
   top: 10%;
   width: 50%;
@@ -52,7 +54,8 @@ cardboard-gl {
 .RightText {
   color: red;
   text-align: center;
-  font-size: 25px;
+  font-size: 34px;
+  text-shadow: 1px 1px 6px #000000;
   position: absolute;
   top: 10%;
   left: 50%;
