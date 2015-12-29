@@ -145,16 +145,13 @@ angular.module('starter.directives', [])
         object.rotation.y = -90 * (Math.PI / 180);
         object.rotation.z = -0 * (Math.PI / 180);
         object.position.set(0, -2, -17);
-        object.scale.x = 0.01;
-        object.scale.y = 0.01;
-        object.scale.z = 0.01;
         object.scale.x = 0.3;
         object.scale.y = 0.3;
         object.scale.z = 0.3;
         StarFighter = object.clone();
         camera.add(StarFighter);
         StarFighterEngineLight = new THREE.PointLight(0x00ccff, 1, 20);
-        StarFighterEngineLight.position.set(0, 0, 0);
+        StarFighterEngineLight.position.set(0, 0, -10);
         camera.add(StarFighterEngineLight);
       });
       raycasterPointer = new THREE.Mesh(new THREE.SphereGeometry(.2, 32, 32), new THREE.MeshBasicMaterial({color: 0xff0000}));
