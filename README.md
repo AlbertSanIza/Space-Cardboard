@@ -12,5 +12,7 @@ D118CB8F
 ```
 If you have a better knowledge on the Ionic Framework you can download this project and do the installation, both iOS and Android.
 
+You can download the Android App [here...](http://albertsaniza.github.io/downloads/space-cardboard-android.apk)
+
 # License
 Apache 2.0
