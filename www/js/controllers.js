@@ -32,7 +32,9 @@ angular.module('starter.controllers', [])
 
   function Vibrate(input) {
     $ionicPlatform.ready(function() {
-      $cordovaVibration.vibrate(input);
+      if(ionic.Platform.isWebView()) {
+        $cordovaVibration.vibrate(input);
+      }
     });
   };
 
